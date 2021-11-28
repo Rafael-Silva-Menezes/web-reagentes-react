@@ -27,7 +27,7 @@ const Dashboard: React.FC = ({ children }) => {
     { title: 'Página Principal', url: '/dashboard', icon: { FiClock } },
     { title: 'Laboratórios', url: '/', icon: '' },
     { title: 'Usuários', url: '/', icon: '' },
-    { title: 'Reagentes', url: '/s', icon: '' },
+    { title: 'Reagentes', url: '/reagentes', icon: '' },
   ];
 
   return (
