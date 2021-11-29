@@ -29,7 +29,7 @@ export const Admin = styled.div`
   }
   @media screen and (max-width: ${responsive_size}) {
     grid-template-rows: 10% 1fr 0px;
-    grid-template-columns: 10% 90%;
+    grid-template-columns: 20% 80%;
   }
 `;
 
@@ -47,6 +47,53 @@ export const Header = styled.header`
   }
 `;
 
+export const Title = styled.h1`
+  display: flex;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: #000000;
+  font-size: 1.4rem;
+
+  @media screen and (max-width: ${responsive_size}) {
+    font-size: 1rem;
+  }
+`;
+
+export const Profile = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  div {
+    display: flex;
+    align-items: center;
+    border-left: 1px solid #cecece;
+    padding: 10px;
+    margin-left: 20px;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  img {
+    width: 7vh;
+    height: 7vh;
+    border-radius: 50%;
+    margin: auto auto auto 10px;
+
+    @media screen and (max-width: ${responsive_size}) {
+      width: 3vh;
+      height: 3vh;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: ${primaryColor};
+  }
+`;
+
 export const Logo = styled.img`
   position: relative;
   display: block;
@@ -57,6 +104,7 @@ export const Logo = styled.img`
 
 export const Logout = styled(Link)`
   display: flex;
+  margin: auto 10px auto 10px;
   color: ${primaryColor};
   &:hover {
     color: ${secondaryColor};
@@ -95,13 +143,13 @@ export const Aside = styled.nav`
 export const MenuContainer = styled.ul`
   list-style-type: none;
   padding: 0;
-`;
 
-export const MenuButton = styled.li`
-  margin-left: 10%;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-  @media (max-width: ${responsive_size}) {
-    margin-left: 0px;
+  li {
+    margin-left: 10%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    @media (max-width: ${responsive_size}) {
+      margin-left: 0px;
+    }
   }
 `;
 
@@ -121,6 +169,8 @@ export const MenuButtonContent = styled(Link)`
 
   @media (max-width: ${responsive_size}) {
     margin-left: 0px;
+    display: flex;
+    justify-content: center;
     & p {
       display: none;
     }
@@ -186,24 +236,6 @@ export const DashboardItemCol = styled.div`
 export const DashboardItemFull = styled.div`
   flex-basis: 100%;
   grid-column: 1 / -1;
-`;
-
-export const Title = styled.h1`
-  display: flex;
-  flex: 0 0 250px;
-  height: ${header_height};
-  font-weight: bold;
-  font-family: sans-serif;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  margin: 0;
-  color: #000000;
-  font-size: 1.4rem;
-
-  @media screen and (max-width: ${responsive_size}) {
-    font-size: 1rem;
-  }
 `;
 
 // export const Footer = styled.footer`

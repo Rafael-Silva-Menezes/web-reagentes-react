@@ -2,22 +2,24 @@
 import React from 'react';
 import { FiPower, FiHome, FiUser } from 'react-icons/fi';
 import { MdOutlineScience, MdWorkOutline } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 import {
   Admin,
   Header,
   Aside,
   MenuContainer,
-  MenuButton,
   MenuButtonContent,
   Logo,
   Main,
   Toolbar,
   Title,
   Logout,
+  Profile,
   Icon,
 } from './styles';
 
 import logoImg from '../../assets/logo.png';
+import profileImg from '../../assets/profile.jpg';
 
 const Dashboard: React.FC = ({ children }) => {
   const menu = [
@@ -32,21 +34,30 @@ const Dashboard: React.FC = ({ children }) => {
       <Header>
         <Toolbar>
           <Title>Página Principal</Title>
-          <Logout to="/">
-            <FiPower />
-          </Logout>
+          <Profile>
+            <Logout to="/">
+              <FiPower />
+            </Logout>
+
+            <div>
+              <Link to="/profile">
+                <strong>Usuário</strong>
+              </Link>
+              <img src={profileImg} alt="Profile" />
+            </div>
+          </Profile>
         </Toolbar>
       </Header>
       <Aside>
         <Logo src={logoImg} alt="Reagentes" />
         <MenuContainer>
           {menu.map(item => (
-            <MenuButton>
+            <li>
               <MenuButtonContent to={item.url}>
                 <Icon>{item.icon}</Icon>
                 <p>{item.title}</p>
               </MenuButtonContent>
-            </MenuButton>
+            </li>
           ))}
         </MenuContainer>
       </Aside>
