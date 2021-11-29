@@ -8,6 +8,8 @@ const side_width = '210px';
 const header_height = '70px';
 const footer_height = '0px';
 
+const responsive_size = '48rem';
+
 export const Admin = styled.div`
   --spacing: 1rem;
   // Flexbox Fallback
@@ -22,8 +24,12 @@ export const Admin = styled.div`
     'nav header'
     'nav main';
 
-  @media screen and (min-width: 48rem) {
+  @media screen and (min-width: ${responsive_size}) {
     --spacing: 2rem;
+  }
+  @media screen and (max-width: ${responsive_size}) {
+    grid-template-rows: 10% 1fr 0px;
+    grid-template-columns: 10% 90%;
   }
 `;
 
@@ -35,6 +41,10 @@ export const Header = styled.header`
   background-color: #fff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   position: relative;
+
+  @media screen and (max-width: ${responsive_size}) {
+    height: 40px;
+  }
 `;
 
 export const Logo = styled.img`
@@ -76,6 +86,10 @@ export const Aside = styled.nav`
   grid-area: nav;
   background-color: ${primaryColor};
   width: ${side_width};
+
+  @media screen and (max-width: ${responsive_size}) {
+    width: 100%;
+  }
 `;
 
 export const MenuContainer = styled.ul`
@@ -86,6 +100,9 @@ export const MenuContainer = styled.ul`
 export const MenuButton = styled.li`
   margin-left: 10%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  @media (max-width: ${responsive_size}) {
+    margin-left: 0px;
+  }
 `;
 
 export const MenuButtonContent = styled(Link)`
@@ -101,10 +118,20 @@ export const MenuButtonContent = styled(Link)`
     background-color: ${secondaryColor};
     text-decoration: none;
   }
+
+  @media (max-width: ${responsive_size}) {
+    margin-left: 0px;
+    & p {
+      display: none;
+    }
+  }
 `;
 
 export const Icon = styled.span`
   margin: auto 5px auto 5px;
+  @media (max-width: ${responsive_size}) {
+    margin: auto 0px auto 0px;
+  }
 `;
 
 export const Card = styled.div`
@@ -129,7 +156,7 @@ export const DashboardContainer = styled.div`
   grid-gap: var(--spacing);
 
   // Switch to 4-col grid on larger screens
-  @media screen and (min-width: 48rem) {
+  @media screen and (min-width: ${responsive_size}) {
     --column-count: 4;
   }
 
@@ -174,8 +201,8 @@ export const Title = styled.h1`
   color: #000000;
   font-size: 1.4rem;
 
-  @media (min-width: 720px) {
-    font-size: 1.8rem;
+  @media screen and (max-width: ${responsive_size}) {
+    font-size: 1rem;
   }
 `;
 
