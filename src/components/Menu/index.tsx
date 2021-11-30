@@ -25,7 +25,7 @@ const Dashboard: React.FC = ({ children }) => {
   const menu = [
     { title: 'Página Principal', url: '/dashboard', icon: <FiHome /> },
     { title: 'Laboratórios', url: '/', icon: <MdWorkOutline /> },
-    { title: 'Usuários', url: '/', icon: <FiUser /> },
+    { title: 'Usuários', url: '/usuarios', icon: <FiUser /> },
     { title: 'Reagentes', url: '/reagentes', icon: <MdOutlineScience /> },
   ];
 

@@ -1,10 +1,13 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Dashboard from '../pages/Dashboard';
-import Reagentes from '../pages/Reagentes';
-import CadastroReagentes from '../pages/Reagentes/CadastroReagentes';
-import GerenciarReagentes from '../pages/Reagentes/GerenciarReagentes';
+import {
+  Dashboard,
+  Reagentes,
+  CadastroReagentes,
+  GerenciarReagentes,
+  Usuarios,
+} from '../pages';
 import Menu from '../components/Menu';
 
 const Routes: React.FC = () => {
@@ -15,6 +18,7 @@ const Routes: React.FC = () => {
         <Route path="/reagentes" component={Reagentes} />
         <Route path="/cadastro_reagentes" component={CadastroReagentes} />
         <Route path="/gerenciar_reagentes" component={GerenciarReagentes} />
+        <Route path="/usuarios" component={Usuarios} />
       </Menu>
     </Switch>
   );
