@@ -26,7 +26,7 @@ const Dashboard: React.FC = ({ children }) => {
     { title: 'Página Principal', url: '/dashboard', icon: <FiHome /> },
     { title: 'Laboratórios', url: '/', icon: <MdWorkOutline /> },
     { title: 'Usuários', url: '/', icon: <FiUser /> },
-    { title: 'Reagentes', url: '/s', icon: <MdOutlineScience /> },
+    { title: 'Reagentes', url: '/reagentes', icon: <MdOutlineScience /> },
   ];
 
   return (
@@ -38,7 +38,6 @@ const Dashboard: React.FC = ({ children }) => {
             <Logout to="/">
               <FiPower />
             </Logout>
-
             <div>
               <Link to="/profile">
                 <strong>Usuário</strong>
