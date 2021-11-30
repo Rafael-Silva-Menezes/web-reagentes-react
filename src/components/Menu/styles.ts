@@ -68,7 +68,7 @@ export const Profile = styled.div`
     display: flex;
     align-items: center;
     border-left: 1px solid #cecece;
-    padding: 10px;
+    padding-left: 1rem;
     margin-left: 20px;
   }
 
@@ -156,6 +156,7 @@ export const MenuContainer = styled.ul`
 export const MenuButtonContent = styled(Link)`
   display: flex;
   flex-direction: row;
+  align-items: center;
   padding: 1rem 1rem;
   color: #fff;
   text-decoration: none;
