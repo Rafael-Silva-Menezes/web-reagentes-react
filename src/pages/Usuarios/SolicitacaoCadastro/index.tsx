@@ -1,7 +1,6 @@
 import React from 'react';
-import { FiThumbsUp, FiThumbsDown } from 'react-icons/fi';
 import Table from '../../../components/Table';
-import { Container, Icon } from './styles';
+import { Container, Accept, Decline } from './styles';
 import Title from '../../../components/Title';
 
 const SolicitacaoCadastro: React.FC = () => {
@@ -12,12 +11,8 @@ const SolicitacaoCadastro: React.FC = () => {
       'user@academico.ufs.br',
       'Pendente',
       <>
-        <Icon>
-          <FiThumbsUp />
-        </Icon>
-        <Icon>
-          <FiThumbsDown />
-        </Icon>
+        <Accept />
+        <Decline />
       </>,
     ],
     [
@@ -25,12 +20,8 @@ const SolicitacaoCadastro: React.FC = () => {
       'user@academico.ufs.br',
       'Pendente',
       <>
-        <Icon>
-          <FiThumbsUp />
-        </Icon>
-        <Icon>
-          <FiThumbsDown />
-        </Icon>
+        <Accept />
+        <Decline />
       </>,
     ],
   ];
