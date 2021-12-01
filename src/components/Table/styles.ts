@@ -7,16 +7,16 @@ export const TableContent = styled.table`
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
-  font-size: 1.2rem;
+  font-size: 1rem;
 
   td,
   th {
-    border: 1px solid #ddd;
+    border: none;
     padding: 8px;
   }
 
   tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #e7f2f7;
   }
 
   tr:hover {

@@ -6,7 +6,7 @@ import { TableContent } from './styles';
 
 interface TableProps {
   title: string[];
-  content: string[][];
+  content: any[][];
 }
 
 const Table: React.FC<TableProps> = ({ title, content }) => {
