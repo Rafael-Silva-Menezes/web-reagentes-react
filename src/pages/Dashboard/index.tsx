@@ -12,12 +12,6 @@ import {
 import Table from '../../components/Table';
 
 const DashboardReagentes: React.FC = ({ children }) => {
-  const Titles = ['Exemplo', 'Exemplo', 'Exemplo'];
-  const Contents = [
-    ['1', '2', '3'],
-    ['4', '5', '6'],
-  ];
-
   return (
     <DashboardContainer>
       <DashboardItem>
@@ -36,9 +30,7 @@ const DashboardReagentes: React.FC = ({ children }) => {
         </Card>
       </DashboardItemFull>
       <DashboardItemCol>
-        <Card>
-          <Table title={Titles} content={Contents} />
-        </Card>
+        <Card>A</Card>
       </DashboardItemCol>
       <DashboardItemCol>
         <Card>B</Card>
