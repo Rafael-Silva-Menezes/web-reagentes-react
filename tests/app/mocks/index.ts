@@ -1,1 +1,1 @@
-export * from './http-mock';
+export * from './http';
