@@ -1,4 +1,6 @@
-import { HttpStatusCode } from '../enum/http-post-params';
+export enum HttpStatusCode {
+  unathorized = 401,
+}
 
 export type HttpResponse = {
   statusCode: HttpStatusCode;
