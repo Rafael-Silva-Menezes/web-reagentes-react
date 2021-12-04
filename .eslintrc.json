@@ -1,14 +1,20 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "jest": true
   },
   "extends": [
     "plugin:react/recommended",
+    "airbnb",
     "plugin:@typescript-eslint/recommended",
-    "standard",
+    "prettier/@typescript-eslint",
     "plugin:prettier/recommended"
   ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -26,17 +32,17 @@
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "@typescript-eslint/no-unused-vars": "off",
+    "react/button-has-type":"off",
     "react/jsx-one-expression-per-line": "off",
-    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off",
     "no-unused-expressions": "off",
     "import/no-duplicates": "off",
     "@typescript-eslint/camelcase": "off",
+    "react-hooks/exhaustive-deps": "warn",
     "no-console":"off",
     "camelcase": "off",
-    "@typescript-eslint/consistent-type-definitions":"off",
-    "@@typescript-eslint/strict-boolean-expressions":"off",
     "prettier/prettier": "error",
-    "import/prefer-default-export": "off",
     "react/jsx-filename-extension": [
       1,
       {
@@ -45,11 +51,7 @@
         ]
       }
     ],
-    "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": [
-      "error"
-    ],
-    "react/react-in-jsx-scope": "off",
+    "import/prefer-default-export": "off",
     "@typescript-eslint/explicit-function-return-type": [
       "error",
       {
@@ -63,8 +65,14 @@
         "ts": "never",
         "tsx": "never"
       }
-    ]
+   ]
   },
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": [
+      "error"
+    ],
+    "react/react-in-jsx-scope": "off",
+
   "settings": {
     "import/resolver": {
       "typescript": {}
