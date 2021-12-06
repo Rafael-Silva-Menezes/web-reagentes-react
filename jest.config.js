@@ -1,5 +1,5 @@
 module.exports = {
-  roots: ['<rootDir>/src','<rootDir>/tests'],
+  roots: ['<rootDir>/src'],
   collectCoverageFrom: [
     '<rootDir>/src/**/*.{ts,tsx}',
     '!<rootDir>/src/main/**/*',
@@ -12,7 +12,6 @@ module.exports = {
     '.+\\.(ts|tsx)$': 'ts-jest'
   },
   moduleNameMapper: {
-    '@/tests/(.*)': '<rootDir>/tests/$1',
     '@/(.*)': '<rootDir>/src/$1',
     '\\.scss$': 'identity-obj-proxy'
   }

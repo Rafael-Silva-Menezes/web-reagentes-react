@@ -1,5 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import faker from 'faker';
-import { AuthenticationParams } from '@/domain/usecases';
+import { AuthenticationParams } from '../usecases/authentication';
 
 export const mockAuthentication = (): AuthenticationParams => ({
   email: faker.internet.email(),
