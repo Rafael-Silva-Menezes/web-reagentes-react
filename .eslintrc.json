@@ -31,6 +31,7 @@
     "react-hooks"
   ],
   "rules": {
+    "react/require-default-props": "off",
     "prettier/prettier": "warn",
     "no-empty-function": "off",
     "lines-between-class-members": "off",
@@ -50,18 +51,18 @@
     "no-console": "off",
     "camelcase": "off",
     "@typescript-eslint/naming-convention": [
-      "error",
+      "off",
       {
-      "selector": "interface",
-      "format": [
-      "PascalCase"
-      ],
-      "custom": {
-      "regex": "^I[A-Z]",
-      "match": true
+        "selector": "interface",
+        "format": [
+          "PascalCase"
+        ],
+        "custom": {
+          "regex": "^I[A-Z]",
+          "match": true
+        }
       }
-      }
-      ],
+    ],
     "react/jsx-filename-extension": [
       1,
       {
@@ -69,14 +70,15 @@
           ".tsx"
         ]
       }
-    ],"import/no-extraneous-dependencies": [
+    ],
+    "import/no-extraneous-dependencies": [
       "error",
       {
-      "devDependencies": [
-      "**/*.spec.ts"
-      ]
+        "devDependencies": [
+          "**/*.spec.ts"
+        ]
       }
-      ],
+    ],
     "import/prefer-default-export": "off",
     "@typescript-eslint/explicit-function-return-type": [
       "error",
