@@ -9,6 +9,8 @@ import {
   Card,
 } from './styles';
 
+import Table from '../../components/Table';
+
 const DashboardReagentes: React.FC = ({ children }) => {
   return (
     <DashboardContainer>

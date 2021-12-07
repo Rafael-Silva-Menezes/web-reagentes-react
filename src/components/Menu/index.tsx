@@ -1,65 +1,66 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
-
+import { FiPower, FiHome, FiUser } from 'react-icons/fi';
+import { MdOutlineScience, MdWorkOutline } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-
-import { FiClock } from 'react-icons/fi';
 import {
   Admin,
   Header,
-  SideMenu,
-  SideMenuOptions,
+  Aside,
+  MenuContainer,
+  MenuButtonContent,
   Logo,
   Main,
-  Footer,
   Toolbar,
-  Item,
-  Alink,
-  Ticker,
-  TickerItem,
   Title,
+  Logout,
+  Profile,
+  Icon,
 } from './styles';
 
 import logoImg from '../../assets/logo.png';
+import profileImg from '../../assets/profile.jpg';
 
 const Dashboard: React.FC = ({ children }) => {
   const menu = [
-    { title: 'Página Principal', url: '/dashboard', icon: { FiClock } },
-    { title: 'Laboratórios', url: '/', icon: '' },
-    { title: 'Usuários', url: '/', icon: '' },
-    { title: 'Reagentes', url: '/reagentes', icon: '' },
+    { title: 'Página Principal', url: '/dashboard', icon: <FiHome /> },
+    { title: 'Laboratórios', url: '/', icon: <MdWorkOutline /> },
+    { title: 'Usuários', url: '/usuarios', icon: <FiUser /> },
+    { title: 'Reagentes', url: '/reagentes', icon: <MdOutlineScience /> },
   ];
 
   return (
     <Admin>
       <Header>
-        <Title>Página Principal</Title>
         <Toolbar>
-          <button className="btn btn--primary">Add New Plumbus</button>
-          {/* <a href="#" className="logout"> */}
-          Log Out
-          {/* </a> */}
+          <Title>Página Principal</Title>
+          <Profile>
+            <Logout to="/">
+              <FiPower />
+            </Logout>
+            <div>
+              <Link to="/profile">
+                <strong>Usuário</strong>
+              </Link>
+              <img src={profileImg} alt="Profile" />
+            </div>
+          </Profile>
         </Toolbar>
       </Header>
-      <SideMenu>
+      <Aside>
         <Logo src={logoImg} alt="Reagentes" />
-        <SideMenuOptions>
+        <MenuContainer>
           {menu.map(item => (
-            <Item>
-              <Link to={item.url}>
-                <Alink>{item.title}</Alink>
-              </Link>
-            </Item>
+            <li>
+              <MenuButtonContent to={item.url}>
+                <Icon>{item.icon}</Icon>
+                <p>{item.title}</p>
+              </MenuButtonContent>
+            </li>
           ))}
-        </SideMenuOptions>
-      </SideMenu>
+        </MenuContainer>
+      </Aside>
       <Main>{children}</Main>
-      <Footer>
-        <Ticker>
-          <TickerItem>Grupo 5 - Reagentes Químicos</TickerItem>
-        </Ticker>
-        <span>&copy; Universidade Federal de Sergipe</span>
-      </Footer>
     </Admin>
   );
 };

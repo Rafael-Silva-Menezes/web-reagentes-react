@@ -1,7 +1,14 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const primaryColor = '#081a51';
 const secondaryColor = '#1B2B65';
+
+const side_width = '210px';
+const header_height = '70px';
+const footer_height = '0px';
+
+const responsive_size = '48rem';
 
 export const Admin = styled.div`
   --spacing: 1rem;
@@ -11,15 +18,18 @@ export const Admin = styled.div`
   // Grid
   display: grid;
   height: 100vh;
-  grid-template-rows: 70px 1fr 70px;
-  grid-template-columns: 250px 1fr;
+  grid-template-rows: ${header_height} 1fr ${footer_height};
+  grid-template-columns: ${side_width} 1fr;
   grid-template-areas:
     'nav header'
-    'nav main'
-    'footer footer';
+    'nav main';
 
-  @media screen and (min-width: 48rem) {
+  @media screen and (min-width: ${responsive_size}) {
     --spacing: 2rem;
+  }
+  @media screen and (max-width: ${responsive_size}) {
+    grid-template-rows: 10% 1fr 0px;
+    grid-template-columns: 20% 80%;
   }
 `;
 
@@ -27,22 +37,61 @@ export const Header = styled.header`
   display: flex;
   flex-basis: 100%;
   grid-area: header;
-  height: 70px;
+  height: ${header_height};
   background-color: #fff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   position: relative;
+
+  @media screen and (max-width: ${responsive_size}) {
+    height: 40px;
+  }
 `;
 
-export const SideMenu = styled.nav`
-  flex: 0 0 250px;
-  grid-area: nav;
-  background-color: ${primaryColor};
-  width: 250px;
+export const Title = styled.h1`
+  display: flex;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: #000000;
+  font-size: 1.4rem;
+
+  @media screen and (max-width: ${responsive_size}) {
+    font-size: 1rem;
+  }
 `;
 
-export const SideMenuOptions = styled.ul`
-  list-style-type: none;
-  padding: 0;
+export const Profile = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  div {
+    display: flex;
+    align-items: center;
+    border-left: 1px solid #cecece;
+    padding-left: 1rem;
+    margin-left: 20px;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  img {
+    width: 7vh;
+    height: 7vh;
+    border-radius: 50%;
+    margin: auto auto auto 10px;
+
+    @media screen and (max-width: ${responsive_size}) {
+      width: 3vh;
+      height: 3vh;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: ${primaryColor};
+  }
 `;
 
 export const Logo = styled.img`
@@ -51,6 +100,15 @@ export const Logo = styled.img`
   margin: 5vh auto 8vh auto;
   max-width: 70%;
   max-height: 70%;
+`;
+
+export const Logout = styled(Link)`
+  display: flex;
+  margin: auto 10px auto 10px;
+  color: ${primaryColor};
+  &:hover {
+    color: ${secondaryColor};
+  }
 `;
 
 export const Main = styled.main`
@@ -63,18 +121,6 @@ export const Main = styled.main`
   background-color: #f4f7fa;
 `;
 
-export const Footer = styled.footer`
-  display: flex;
-  grid-area: footer;
-  flex-basis: 100%;
-  justify-content: space-between;
-  align-items: center;
-  height: 70px;
-  padding: 0 var(--spacing);
-  color: #3a5094;
-  background-color: #040e2f;
-`;
-
 export const Toolbar = styled.div`
   display: flex;
   flex: 1;
@@ -83,13 +129,35 @@ export const Toolbar = styled.div`
   padding: 0 var(--spacing);
 `;
 
-export const Item = styled.li`
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+export const Aside = styled.nav`
+  flex: 0 0 ${side_width};
+  grid-area: nav;
+  background-color: ${primaryColor};
+  width: ${side_width};
+
+  @media screen and (max-width: ${responsive_size}) {
+    width: 100%;
+  }
 `;
 
-export const Alink = styled.a`
-  display: block;
-  padding: 1rem 2rem;
+export const MenuContainer = styled.ul`
+  list-style-type: none;
+  padding: 0;
+
+  li {
+    margin-left: 10%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    @media (max-width: ${responsive_size}) {
+      margin-left: 0px;
+    }
+  }
+`;
+
+export const MenuButtonContent = styled(Link)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem 1rem;
   color: #fff;
   text-decoration: none;
 
@@ -97,6 +165,23 @@ export const Alink = styled.a`
   &:focus {
     color: #fff;
     background-color: ${secondaryColor};
+    text-decoration: none;
+  }
+
+  @media (max-width: ${responsive_size}) {
+    margin-left: 0px;
+    display: flex;
+    justify-content: center;
+    & p {
+      display: none;
+    }
+  }
+`;
+
+export const Icon = styled.span`
+  margin: auto 5px auto 5px;
+  @media (max-width: ${responsive_size}) {
+    margin: auto 0px auto 0px;
   }
 `;
 
@@ -108,18 +193,6 @@ export const Card = styled.div`
   background-color: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-`;
-
-export const Ticker = styled.ul`
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-export const TickerItem = styled.li`
-  margin-right: 1rem;
 `;
 
 export const DashboardContainer = styled.div`
@@ -134,7 +207,7 @@ export const DashboardContainer = styled.div`
   grid-gap: var(--spacing);
 
   // Switch to 4-col grid on larger screens
-  @media screen and (min-width: 48rem) {
+  @media screen and (min-width: ${responsive_size}) {
     --column-count: 4;
   }
 
@@ -166,20 +239,26 @@ export const DashboardItemFull = styled.div`
   grid-column: 1 / -1;
 `;
 
-export const Title = styled.h1`
-  display: flex;
-  flex: 0 0 250px;
-  height: 70px;
-  font-weight: bold;
-  font-family: sans-serif;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  margin: 0;
-  color: #000000;
-  font-size: 1.4rem;
+// export const Footer = styled.footer`
+//   display: flex;
+//   grid-area: footer;
+//   flex-basis: 100%;
+//   justify-content: space-between;
+//   align-items: center;
+//   height: ${footer_height};
+//   padding: 0 var(--spacing);
+//   color: #3a5094;
+//   background-color: #040e2f;
+// `;
 
-  @media (min-width: 720px) {
-    font-size: 1.8rem;
-  }
-`;
+// export const Ticker = styled.ul`
+//   list-style-type: none;
+//   padding: 0;
+//   margin: 0;
+//   display: flex;
+//   flex-wrap: wrap;
+// `;
+
+// export const TickerItem = styled.li`
+//   margin-right: 1rem;
+// `;
