@@ -1,5 +1,9 @@
-import { HttpPostClient, HttpPostParams } from '../contracts/http-post-client';
-import { HttpResponse, HttpStatusCode } from '../contracts/http-response';
+import {
+  HttpPostClient,
+  HttpPostParams,
+  HttpResponse,
+  HttpStatusCode,
+} from '../contracts/http';
 
 export class HttpPostClientSpy<T, R> implements HttpPostClient<T, R> {
   url?: string;
