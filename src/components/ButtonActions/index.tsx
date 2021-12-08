@@ -8,7 +8,7 @@ import { Container } from './styles';
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   loading?: boolean;
   icon?: React.ComponentType<IconBaseProps>;
-  to: string;
+  onClick: any;
   color?: string;
 };
 
@@ -16,17 +16,15 @@ const ButtonActions: React.FC<ButtonProps> = ({
   children,
   loading,
   icon: Icon,
-  to,
+  onClick,
   color,
   ...rest
 }) => {
   return (
-    <Link to={to}>
-      <Container color={color} type="button" {...rest}>
-        {loading ? 'Carregando...' : children}
-        {Icon && <Icon size={20} />}
-      </Container>
-    </Link>
+    <Container onClick={onClick} color={color} type="button" {...rest}>
+      {loading ? 'Carregando...' : children}
+      {Icon && <Icon size={20} />}
+    </Container>
   );
 };
 
