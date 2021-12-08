@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { FiThumbsUp, FiThumbsDown } from 'react-icons/fi';
 
 const primaryColor = '#081a51';
 
@@ -8,18 +7,6 @@ export const Container = styled.div`
   padding: 0.1rem;
   margin-top: 3rem;
   font-weight: 100;
-`;
-
-export const Accept = styled(FiThumbsUp)`
-  color: ${primaryColor};
-  cursor: pointer;
-  margin: auto 0.4rem auto 0.4rem;
-`;
-
-export const Decline = styled(FiThumbsDown)`
-  color: #008080;
-  cursor: pointer;
-  margin: auto 0.4rem auto 0.4rem;
 `;
 
 export const Table = styled.table`
@@ -40,7 +27,7 @@ export const TextId = styled.td`
   text-align: left;
   max-width: 50px;
   width: auto;
-  min-width: 70px;
+  min-width: 100px;
 `;
 
 export const TextName = styled.td`
