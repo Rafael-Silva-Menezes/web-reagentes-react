@@ -11,10 +11,10 @@ const Reagentes: React.FC = ({ children }) => {
       <ReagentesCardButton to="/cadastrar_licenca">
         <ReagentesSpan>Cadastrar Licença</ReagentesSpan>
       </ReagentesCardButton>
-      <ReagentesCardButton to="/cadastro_reagentes">
+      <ReagentesCardButton to="/cadastrar_reagentes">
         <ReagentesSpan>Cadastrar Reagentes Controlados</ReagentesSpan>
       </ReagentesCardButton>
-      <ReagentesCardButton to="/gerenciar_reagentes">
+      <ReagentesCardButton to="/listar_reagentes">
         <ReagentesSpan>Gerenciar Reagentes Controlados</ReagentesSpan>
       </ReagentesCardButton>
     </ReagentesContainer>
