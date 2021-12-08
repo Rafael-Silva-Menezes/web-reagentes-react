@@ -31,6 +31,9 @@
     "react-hooks"
   ],
   "rules": {
+    "no-restricted-globals": "off",
+    "no-alert": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "react/require-default-props": "off",
     "prettier/prettier": "warn",
     "no-empty-function": "off",
