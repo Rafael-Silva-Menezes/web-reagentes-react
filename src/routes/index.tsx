@@ -8,6 +8,7 @@ import {
   GerenciarReagentes,
   Usuarios,
   SolicitacaoCadastro,
+  CadastrarLicenca,
 } from '../pages';
 import Menu from '../components/Menu';
 
@@ -19,6 +20,7 @@ const Routes: React.FC = () => {
         <Route path="/reagentes" component={Reagentes} />
         <Route path="/cadastro_reagentes" component={CadastroReagentes} />
         <Route path="/gerenciar_reagentes" component={GerenciarReagentes} />
+        <Route path="/cadastrar_licenca" component={CadastrarLicenca} />
         <Route path="/usuarios" component={Usuarios} />
         <Route path="/solicitacao-cadastro" component={SolicitacaoCadastro} />
       </Menu>
