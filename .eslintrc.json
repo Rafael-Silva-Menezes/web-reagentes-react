@@ -33,6 +33,10 @@
   ],
   "rules": {
     "prettier/prettier": "error",
+    "@typescript-eslint/strict-boolean-expressions":"off",
+    "@typescript-eslint/consistent-type-definitions":"off",
+    "react/jsx-uses-react":"error",
+    "react/jsx-uses-vars":"error",
     "import/no-extraneous-dependencies":"off",
     "class-methods-use-this":"off",
     "import/prefer-default-export":"off",
