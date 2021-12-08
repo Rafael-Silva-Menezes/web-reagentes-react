@@ -7,15 +7,10 @@ interface ContainerProps {
   isErrored: boolean;
 }
 export const Container = styled.div<ContainerProps>`
-  background: #232129;
-  border-radius: 10px;
-
-  padding: 16px;
+  border-bottom: 1px solid #081a51;
+  padding: 5px;
+  margin: auto auto 20px auto;
   width: 100%;
-
-  border: 2px solid #232129;
-  color: #666360;
-
   display: flex;
   align-items: center;
 
@@ -32,26 +27,23 @@ export const Container = styled.div<ContainerProps>`
   ${props =>
     props.isFocused &&
     css`
-      color: #9400D3;
-      border-color: #9400D3;
+      color: #0000ff;
+      border-color: #0000ff;
     `}
 
   ${props =>
     props.isFilled &&
     css`
-      color: #9400D3;
+      color: #9400d3;
     `}
-
-
-
 
   input {
     flex: 1;
     background: transparent;
     border: 0;
-    color: #f4ede8;
+    color: #000000;
     &::placeholder {
-      color: #666360;
+      color: #c6c6c6;
     }
   }
   svg {
