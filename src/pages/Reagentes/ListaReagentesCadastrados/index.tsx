@@ -18,6 +18,21 @@ const ListaReagentesCadastrados: React.FC = () => {
     },
   ];
 
+  const deleteByCode = (code: string, reagent: string): void => {
+    const result = confirm(`Deseja realmente excluir o reagente ${reagent}?`);
+    if (result) {
+      // try {
+      //   api.put(`/users/approve/${id}`).then(response => {
+      //     console.log(response);
+      //     if (response.status > 300)
+      //       alert('Não foi possível realizar a operação.');
+      //   });
+      // } catch (err) {
+      //   alert(err);
+      // }
+    }
+  };
+
   return (
     <>
       <Title>Reagentes Licenciados</Title>
@@ -37,7 +52,7 @@ const ListaReagentesCadastrados: React.FC = () => {
                     color="#081a51"
                     icon={FiTrash2}
                     onClick={() => {
-                      console.log('click');
+                      deleteByCode(item.code, item.reagent);
                     }}
                   />
                 </div>
