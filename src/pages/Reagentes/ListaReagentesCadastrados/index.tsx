@@ -5,7 +5,6 @@ import Title from '../../../components/Title';
 import ButtonActions from '../../../components/ButtonActions';
 
 const ListaReagentesCadastrados: React.FC = () => {
-  const Titles = ['Nome', 'E-mail', 'Status', 'Ação'];
   const content = [
     {
       reagent: 'Acetona',
@@ -21,7 +20,7 @@ const ListaReagentesCadastrados: React.FC = () => {
 
   return (
     <>
-      <Title>Solicitações de cadastro pendentes</Title>
+      <Title>Reagentes Licenciados</Title>
       <Container>
         <Table>
           {content.map(item => (
@@ -30,8 +29,17 @@ const ListaReagentesCadastrados: React.FC = () => {
               <TextName>{item.reagent}</TextName>
               <Buttons>
                 <div>
-                  {/* <ButtonActions icon={FiEdit} to="#" />
-                  <ButtonActions color="#081a51" icon={FiTrash2} to="#" /> */}
+                  <ButtonActions
+                    icon={FiEdit}
+                    to={`/editar_reagente/${item.code}`}
+                  />
+                  <ButtonActions
+                    color="#081a51"
+                    icon={FiTrash2}
+                    onClick={() => {
+                      console.log('click');
+                    }}
+                  />
                 </div>
               </Buttons>
             </tr>
