@@ -33,8 +33,13 @@
   ],
   "rules": {
     "prettier/prettier": "error",
+    "import/no-extraneous-dependencies":"off",
+    "class-methods-use-this":"off",
+    "import/prefer-default-export":"off",
     "react-hooks/rules-of-hooks": "error",
+    "no-shadow":"off",
     "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/no-explicit-any":"off",
     "react/jsx-filename-extension": [
       1,
       {
