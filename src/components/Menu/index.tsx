@@ -57,6 +57,7 @@ const Dashboard: React.FC = ({ children }) => {
                 <p>{item.title}</p>
               </MenuButtonContent>
             </li>
+            
           ))}
         </MenuContainer>
       </Aside>

@@ -9,6 +9,7 @@ import {
   Usuarios,
   SolicitacaoCadastro,
 } from '../pages';
+
 import Menu from '../components/Menu';
 
 const Routes: React.FC = () => {

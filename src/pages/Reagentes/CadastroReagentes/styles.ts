@@ -6,6 +6,7 @@ export const CadastroContainer = styled.div`
   padding: .1rem;
   font-weight: 100;
   
+  
 `;
 
 export const CadastroSpan = styled.span`
