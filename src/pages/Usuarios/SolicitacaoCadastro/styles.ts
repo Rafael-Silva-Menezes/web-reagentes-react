@@ -46,3 +46,12 @@ export const Buttons = styled.td`
   width: auto;
   min-width: 10px;
 `;
+
+export const Loading = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 3rem auto auto auto;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+`;

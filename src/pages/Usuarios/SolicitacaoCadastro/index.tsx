@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiThumbsUp, FiThumbsDown } from 'react-icons/fi';
+import Loader from 'react-loader-spinner';
 import {
   Container,
   Table,
@@ -7,6 +8,7 @@ import {
   TextName,
   TextNumber,
   Buttons,
+  Loading,
 } from './styles';
 import Title from '../../../components/Title';
 import ButtonActions from '../../../components/ButtonActions';
@@ -15,20 +17,27 @@ import api from '../../../services/api';
 
 const SolicitacaoCadastro: React.FC = () => {
   const [list, setList] = useState<ListUsersPending[]>([]);
+  const [call, setCall] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    api
-      .post('/users/login', {
-        email: 'admin@academico.ufs.br',
-        password: 'admin',
-      })
-      .then(response => {
-        api.defaults.headers.common['x-access-token'] =
-          response.data.accessToken;
-        api.get(`/users/list/pending`).then(listPending => {
-          setList(listPending.data);
+    if (list.length === 0 && !call) {
+      setLoading(true);
+      api
+        .post('/users/login', {
+          email: 'admin@academico.ufs.br',
+          password: 'admin',
+        })
+        .then(response => {
+          api.defaults.headers.common['x-access-token'] =
+            response.data.accessToken;
+          api.get(`/users/list/pending`).then(listPending => {
+            setList(listPending.data);
+            setLoading(false);
+            setCall(true);
+          });
         });
-      });
+    }
   }, []);
 
   const accept = (id: string, name: string): void => {
@@ -67,32 +76,43 @@ const SolicitacaoCadastro: React.FC = () => {
     <>
       <Title>Solicitações de cadastro pendentes</Title>
       <Container>
-        <Table>
-          {list.map(item => (
-            <tr key={item.id}>
-              <TextId>{item.email}</TextId>
-              <TextName>{item.name}</TextName>
-              <TextNumber>{item.status}</TextNumber>
-              <Buttons>
-                <div>
-                  <ButtonActions
-                    icon={FiThumbsUp}
-                    onClick={() => {
-                      accept(item.id, item.name);
-                    }}
-                  />
-                  <ButtonActions
-                    color="#081a51"
-                    icon={FiThumbsDown}
-                    onClick={() => {
-                      deny(item.id, item.name);
-                    }}
-                  />
-                </div>
-              </Buttons>
-            </tr>
-          ))}
-        </Table>
+        {loading ? (
+          <Loading>
+            <Loader
+              type="BallTriangle"
+              color="#081a51"
+              height={80}
+              width={80}
+            />
+          </Loading>
+        ) : (
+          <Table>
+            {list.map(item => (
+              <tr key={item.id}>
+                <TextId>{item.email}</TextId>
+                <TextName>{item.name}</TextName>
+                <TextNumber>{item.status}</TextNumber>
+                <Buttons>
+                  <div>
+                    <ButtonActions
+                      icon={FiThumbsUp}
+                      onClick={() => {
+                        accept(item.id, item.name);
+                      }}
+                    />
+                    <ButtonActions
+                      color="#081a51"
+                      icon={FiThumbsDown}
+                      onClick={() => {
+                        deny(item.id, item.name);
+                      }}
+                    />
+                  </div>
+                </Buttons>
+              </tr>
+            ))}
+          </Table>
+        )}
       </Container>
     </>
   );
