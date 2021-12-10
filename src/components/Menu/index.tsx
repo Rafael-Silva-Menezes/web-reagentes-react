@@ -19,9 +19,11 @@ import {
 
 import logoImg from '../../assets/logo.png';
 import profileImg from '../../assets/profile.jpg';
+import { useAuth } from '../../hooks/auth';
 
 const Menu: React.FC = ({ children }) => {
-  const menu = [
+  const { signOut } = useAuth();
+  const nav = [
     { title: 'Página Principal', url: '/dashboard', icon: <FiHome /> },
     { title: 'Laboratórios', url: '/laboratories', icon: <MdWorkOutline /> },
     { title: 'Usuários', url: '/users', icon: <FiUser /> },
@@ -34,7 +36,7 @@ const Menu: React.FC = ({ children }) => {
         <Toolbar>
           <Title />
           <Profile>
-            <Logout to="/">
+            <Logout type="button" onClick={signOut}>
               <FiPower />
             </Logout>
             <div>
@@ -49,7 +51,7 @@ const Menu: React.FC = ({ children }) => {
       <Aside>
         <Logo src={logoImg} alt="Reagentes" />
         <MenuContainer>
-          {menu.map(item => (
+          {nav.map(item => (
             <li>
               <MenuButtonContent to={item.url}>
                 <Icon>{item.icon}</Icon>

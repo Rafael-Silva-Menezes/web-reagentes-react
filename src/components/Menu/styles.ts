@@ -102,9 +102,11 @@ export const Logo = styled.img`
   max-height: 70%;
 `;
 
-export const Logout = styled(Link)`
+export const Logout = styled.button`
   display: flex;
   margin: auto 10px auto 10px;
+  background: none;
+  border: none;
   color: ${primaryColor};
   &:hover {
     color: ${secondaryColor};

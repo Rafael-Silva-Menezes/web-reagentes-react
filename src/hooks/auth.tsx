@@ -8,7 +8,7 @@ interface User {
 }
 
 interface AuthState {
-  acessToken: string;
+  accessToken: string;
   user: User;
 }
 
@@ -28,13 +28,13 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 const AuthProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<AuthState>(() => {
-    const acessToken = localStorage.getItem('@Reagentes:acessToken');
+    const accessToken = localStorage.getItem('@Reagentes:accessToken');
     const user = localStorage.getItem('@Reagentes:user');
 
-    if (acessToken && user) {
-      api.defaults.headers.authorization = `${acessToken}`;
+    if (accessToken && user) {
+      api.defaults.headers['x-access-token'] = `${accessToken}`;
 
-      return { acessToken, user: JSON.parse(user) };
+      return { accessToken, user: JSON.parse(user) };
     }
 
     return {} as AuthState;
@@ -46,14 +46,17 @@ const AuthProvider: React.FC = ({ children }) => {
       password,
     });
 
-    const { acessToken, user } = response.data;
-
-    localStorage.setItem('@Reagentes:token', acessToken);
+    const { accessToken, name, role } = response.data;
+    const user = {
+      name,
+      role,
+    };
+    localStorage.setItem('@Reagentes:token', accessToken);
     localStorage.setItem('@Reagentes:user', JSON.stringify(user));
 
-    api.defaults.headers.authorization = `${acessToken}`;
+    api.defaults.headers.authorization = `${accessToken}`;
 
-    setData({ acessToken, user });
+    setData({ accessToken, user });
   }, []);
 
   const signOut = useCallback(() => {
@@ -68,11 +71,11 @@ const AuthProvider: React.FC = ({ children }) => {
       localStorage.setItem('@Reagentes:user', JSON.stringify(user));
 
       setData({
-        acessToken: data.acessToken,
+        accessToken: data.accessToken,
         user,
       });
     },
-    [setData, data.acessToken],
+    [setData, data.accessToken],
   );
 
   return (

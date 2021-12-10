@@ -15,6 +15,7 @@ import Input from '../../../components/Input';
 import Button from '../../../components/Button';
 
 import { Container, Content, AnimationContainer } from '../styles';
+import api from '../../../services/api';
 
 interface SignInFormData {
   email: string;
@@ -49,7 +50,6 @@ const SignIn: React.FC = () => {
           email: data.email,
           password: data.password,
         });
-
         history.push('/dashboard');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
