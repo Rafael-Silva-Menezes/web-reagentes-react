@@ -44,7 +44,7 @@ const EditReagents: React.FC = ({ children }) => {
         }
       }
     },
-    [history, id],
+    [history],
   );
 
   return (

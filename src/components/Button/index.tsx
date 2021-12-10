@@ -7,7 +7,12 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   color?: string;
 };
 
-const Button: React.FC<ButtonProps> = ({ children, loading, color, ...rest }) => {
+const Button: React.FC<ButtonProps> = ({
+  children,
+  loading,
+  color,
+  ...rest
+}) => {
   return (
     <Container color={color} type="button" {...rest}>
       {loading ? 'Carregando...' : children}

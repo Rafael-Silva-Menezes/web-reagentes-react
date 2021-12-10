@@ -45,7 +45,7 @@ const CadastrarLaboratorio: React.FC = ({ children }) => {
         }
       }
     },
-    [history, id],
+    [history],
   );
 
   return (

@@ -3,11 +3,11 @@ import { Switch } from 'react-router-dom';
 
 import Route from './Route';
 
-import SignIn from '../pages/SignIn';
-import SignUp from '../pages/SignUp';
+import SignIn from '../pages/Authentication/SignIn';
+import SignUp from '../pages/Authentication/SignUp';
 
-import ForgotPassword from '../pages/ForgotPassword';
-import ResetPassword from '../pages/ResetPassword';
+import ForgotPassword from '../pages/Authentication/ForgotPassword';
+import ResetPassword from '../pages/Authentication/ResetPassword';
 import Dashboard from '../pages/Dashboard';
 import Menu from '../components/Menu';
 import Reagents from '../pages/Reagents';
@@ -30,17 +30,29 @@ const Routes: React.FC = () => {
       <Route path="/forgot-password" component={ForgotPassword} />
       <Route path="/reset-password" component={ResetPassword} />
       <Menu>
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/reagents" component={Reagents} />
-        <Route path="/add_reagents" component={AddReagents} />
-        <Route path="/gerenciar_reagents" component={ManageReagents} />
-        <Route path="/list_reagents" component={ListReagentsRegistered} />
-        <Route path="/edit_reagent/:id" component={EditReagents} />
-        <Route path="/add_license" component={AddLicense} />
-        <Route path="/users" component={MenuUsers} />
-        <Route path="/request_register" component={RegistrationRequest} />
-        <Route path="/laboratories" component={MenuLaboratory} />
-        <Route path="/add_laboratory" component={AddLaboratories} />
+        <Route path="/dashboard" isPrivate component={Dashboard} />
+        <Route path="/reagents" isPrivate component={Reagents} />
+        <Route path="/add_reagents" isPrivate component={AddReagents} />
+        <Route
+          path="/gerenciar_reagents"
+          isPrivate
+          component={ManageReagents}
+        />
+        <Route
+          path="/list_reagents"
+          isPrivate
+          component={ListReagentsRegistered}
+        />
+        <Route path="/edit_reagent/:id" isPrivate component={EditReagents} />
+        <Route path="/add_license" isPrivate component={AddLicense} />
+        <Route path="/users" isPrivate component={MenuUsers} />
+        <Route
+          path="/request_register"
+          isPrivate
+          component={RegistrationRequest}
+        />
+        <Route path="/laboratories" isPrivate component={MenuLaboratory} />
+        <Route path="/add_laboratory" isPrivate component={AddLaboratories} />
       </Menu>
     </Switch>
   );

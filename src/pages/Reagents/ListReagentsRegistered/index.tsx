@@ -52,7 +52,7 @@ const ListaReagentesCadastrados: React.FC = () => {
     //       });
     //     });
     // }
-  }, []);
+  }, [call, list.length]);
 
   const deleteByCode = (code: string, reagent: string): void => {
     const result = confirm(`Deseja realmente excluir o reagente ${reagent}?`);

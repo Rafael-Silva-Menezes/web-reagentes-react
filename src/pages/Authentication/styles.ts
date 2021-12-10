@@ -45,6 +45,17 @@ export const AnimationContainer = styled.div`
     h1 {
       margin-bottom: 24px;
     }
+
+    button{
+      background:#f4ede8 ;
+      color: #666360;
+
+      &:hover {
+        background: ${shade(0.1, '#f4ede8')};
+        color: ${shade(0.2, '#081A51')};
+
+      }
+    }
   }
 
     a {
