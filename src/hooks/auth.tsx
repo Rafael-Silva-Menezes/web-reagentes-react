@@ -4,6 +4,7 @@ import api from '../services/api';
 
 interface User {
   name: string;
+  role: string;
 }
 
 interface AuthState {
