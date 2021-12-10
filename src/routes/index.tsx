@@ -4,8 +4,8 @@ import { Switch, Route } from 'react-router-dom';
 import {
   Dashboard,
   Reagentes,
+  Atualizar,
   CadastroReagentes,
-  GerenciarReagentes,
   Usuarios,
   SolicitacaoCadastro,
 } from '../pages';
@@ -19,7 +19,7 @@ const Routes: React.FC = () => {
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/reagentes" component={Reagentes} />
         <Route path="/cadastro_reagentes" component={CadastroReagentes} />
-        <Route path="/gerenciar_reagentes" component={GerenciarReagentes} />
+        <Route path="/gerenciar_reagentes" component={Atualizar} />
         <Route path="/usuarios" component={Usuarios} />
         <Route path="/solicitacao-cadastro" component={SolicitacaoCadastro} />
       </Menu>
