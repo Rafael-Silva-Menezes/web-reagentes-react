@@ -36,8 +36,6 @@ const EditReagents: React.FC = ({ children }) => {
           abortEarly: false,
         });
 
-        //
-
         history.push('/list_reagents');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {

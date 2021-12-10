@@ -50,7 +50,6 @@ const AddLicense: React.FC = () => {
           abortEarly: false,
         });
 
-        //
 
         history.push('/listBranch');
       } catch (err) {

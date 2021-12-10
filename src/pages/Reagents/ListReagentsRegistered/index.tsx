@@ -46,7 +46,7 @@ const ListReagentsRegistered: React.FC = () => {
                 <div>
                   <ButtonActions
                     icon={FiEdit}
-                    to={`/editar_reagente/${item.code}`}
+                    to={`/edit_reagent/${item.code}`}
                   />
                   <ButtonActions
                     color="#081a51"
