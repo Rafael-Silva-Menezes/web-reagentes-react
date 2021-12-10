@@ -1,12 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import { api } from './services/api';
+import GlobalStyle from './styles/globals';
+
+import AppProvider from './hooks';
+
+import Routes from './routes';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <h1>Reagentes Web</h1>
-    </div>
+    <Router>
+      <AppProvider>
+        <Routes />
+      </AppProvider>
+
+      <GlobalStyle />
+    </Router>
   );
 };
 

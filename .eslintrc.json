@@ -34,12 +34,14 @@
     "prettier/prettier": "warn",
     "no-empty-function": "off",
     "lines-between-class-members": "off",
+    "react/require-default-props":"off",
     "no-useless-constructor": "off",
     "class-methods-use-this": "off",
     "import/no-unresolved": "error",
     "@typescript-eslint/no-unused-vars": "off",
     "react/button-has-type": "off",
     "react/jsx-one-expression-per-line": "off",
+    "@typescript-eslint/naming-convention":"off",
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
     "react-hooks/rules-of-hooks": "error",
@@ -49,35 +51,10 @@
     "@typescript-eslint/camelcase": "off",
     "no-console": "off",
     "camelcase": "off",
-    "@typescript-eslint/naming-convention": [
-      "error",
-      {
-      "selector": "interface",
-      "format": [
-      "PascalCase"
-      ],
-      "custom": {
-      "regex": "^I[A-Z]",
-      "match": true
-      }
-      }
-      ],
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [
-          ".tsx"
-        ]
-      }
-    ],"import/no-extraneous-dependencies": [
-      "error",
-      {
-      "devDependencies": [
-      "**/*.spec.ts"
-      ]
-      }
-      ],
     "import/prefer-default-export": "off",
+    "react/jsx-filename-extension":"off",
+    "import/no-extraneous-dependencies":"off",
+    "react/jsx-no-constructed-context-values":"off",
     "@typescript-eslint/explicit-function-return-type": [
       "error",
       {
