@@ -1,6 +1,10 @@
 import React from 'react';
 import { FiPower, FiHome, FiUser } from 'react-icons/fi';
-import { MdOutlineScience, MdWorkOutline } from 'react-icons/md';
+import {
+  MdOutlineScience,
+  MdWorkOutline,
+  MdDocumentScanner,
+} from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import {
   Admin,
@@ -28,6 +32,7 @@ const Menu: React.FC = ({ children }) => {
     { title: 'Laboratórios', url: '/laboratories', icon: <MdWorkOutline /> },
     { title: 'Usuários', url: '/users', icon: <FiUser /> },
     { title: 'Reagentes', url: '/reagents', icon: <MdOutlineScience /> },
+    { title: 'Relatórios', url: '/reports ', icon: <MdDocumentScanner /> },
   ];
 
   return (
