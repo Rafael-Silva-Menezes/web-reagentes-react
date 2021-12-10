@@ -1,13 +1,13 @@
 import React from 'react';
 import { Container, CardButton, Span } from './styles';
 
-const MenuLaboratorio: React.FC = () => {
+const MenuLaboratory: React.FC = () => {
   return (
     <Container>
-      <CardButton to="/cadastrar_laboratorio">
+      <CardButton to="/add_laboratory">
         <Span>Cadastrar Laboratório</Span>
       </CardButton>
     </Container>
   );
 };
-export default MenuLaboratorio;
+export default MenuLaboratory;

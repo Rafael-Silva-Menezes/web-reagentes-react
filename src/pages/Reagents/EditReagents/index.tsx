@@ -38,7 +38,7 @@ const EditReagents: React.FC = ({ children }) => {
 
         //
 
-        history.push('/listar_reagentes');
+        history.push('/list_reagents');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -53,7 +53,7 @@ const EditReagents: React.FC = ({ children }) => {
     <>
       <Title>Edição de Reagente</Title>
       <Header>
-        <Link to="/listar_reagentes">
+        <Link to="/list_reagents">
           <FiArrowLeft size={40} />
         </Link>
       </Header>

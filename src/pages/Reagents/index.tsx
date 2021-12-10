@@ -1,23 +1,19 @@
 import React from 'react';
-import {
-  ReagentesContainer,
-  ReagentesCardButton,
-  ReagentesSpan,
-} from './styles';
+import { Container, CardButton, Span } from './styles';
 
-const Reagentes: React.FC = ({ children }) => {
+const Reagents: React.FC = ({ children }) => {
   return (
-    <ReagentesContainer>
-      <ReagentesCardButton to="/cadastrar_licenca">
-        <ReagentesSpan>Cadastrar Licença</ReagentesSpan>
-      </ReagentesCardButton>
-      <ReagentesCardButton to="/cadastrar_reagentes">
-        <ReagentesSpan>Cadastrar Reagentes Controlados</ReagentesSpan>
-      </ReagentesCardButton>
-      <ReagentesCardButton to="/listar_reagentes">
-        <ReagentesSpan>Gerenciar Reagentes Controlados</ReagentesSpan>
-      </ReagentesCardButton>
-    </ReagentesContainer>
+    <Container>
+      <CardButton to="/add_license">
+        <Span>Cadastrar Licença</Span>
+      </CardButton>
+      <CardButton to="/add_reagents">
+        <Span>Cadastrar Reagentes Controlados</Span>
+      </CardButton>
+      <CardButton to="/list_reagents">
+        <Span>Gerenciar Reagentes Controlados</Span>
+      </CardButton>
+    </Container>
   );
 };
-export default Reagentes;
+export default Reagents;

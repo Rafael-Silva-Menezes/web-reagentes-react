@@ -20,12 +20,12 @@ import {
 import logoImg from '../../assets/logo.png';
 import profileImg from '../../assets/profile.jpg';
 
-const Dashboard: React.FC = ({ children }) => {
+const Menu: React.FC = ({ children }) => {
   const menu = [
     { title: 'Página Principal', url: '/dashboard', icon: <FiHome /> },
-    { title: 'Laboratórios', url: '/laboratorios', icon: <MdWorkOutline /> },
-    { title: 'Usuários', url: '/usuarios', icon: <FiUser /> },
-    { title: 'Reagentes', url: '/reagentes', icon: <MdOutlineScience /> },
+    { title: 'Laboratórios', url: '/laboratories', icon: <MdWorkOutline /> },
+    { title: 'Usuários', url: '/users', icon: <FiUser /> },
+    { title: 'Reagentes', url: '/reagents', icon: <MdOutlineScience /> },
   ];
 
   return (
@@ -63,4 +63,4 @@ const Dashboard: React.FC = ({ children }) => {
     </Admin>
   );
 };
-export default Dashboard;
+export default Menu;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const ReagentesContainer = styled.div`
+export const Container = styled.div`
   height: 100%;
   padding: 0.1rem;
   font-weight: 100;
@@ -9,7 +9,7 @@ export const ReagentesContainer = styled.div`
   flex-direction: row;
 `;
 
-export const ReagentesCardButton = styled(Link)`
+export const CardButton = styled(Link)`
   display: inline-block;
   height: 5rem;
   width: 15rem;
@@ -22,7 +22,7 @@ export const ReagentesCardButton = styled(Link)`
   text-align: center;
 `;
 
-export const ReagentesSpan = styled.span`
+export const Span = styled.span`
   height: 100%;
   font-size: 1.2rem;
   display: flex;

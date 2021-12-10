@@ -37,7 +37,7 @@ const AddLaboratories: React.FC = ({ children }) => {
 
         //
 
-        history.push('/listar_reagentes');
+        history.push('/list_reagents');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
