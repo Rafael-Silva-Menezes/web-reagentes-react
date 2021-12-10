@@ -1,12 +1,17 @@
-/* eslint-disable no-alert */
 import React from 'react';
 import { FiEdit, FiTrash2, FiUsers } from 'react-icons/fi';
-import { Container, Table, TextId, TextName, Buttons } from './styles';
+import {
+  Container,
+  Table,
+  TextId,
+  TextName,
+  Buttons,
+  TextNumber,
+} from './styles';
 import Title from '../../../components/Title';
 import ButtonActions from '../../../components/ButtonActions';
-import { TextNumber } from '../../Reagents/ListReagentsRegistered/styles';
 
-const ListLaboratories: React.FC = () => {
+const ListaLaboratorios: React.FC = () => {
   const content = [
     {
       campus: 'Aracaju',
@@ -71,4 +76,4 @@ const ListLaboratories: React.FC = () => {
     </>
   );
 };
-export default ListLaboratories;
+export default ListaLaboratorios;

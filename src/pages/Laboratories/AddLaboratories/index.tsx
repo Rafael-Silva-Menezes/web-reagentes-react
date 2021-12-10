@@ -16,7 +16,7 @@ interface FormData {
   code: string;
 }
 
-const AddLaboratories: React.FC = ({ children }) => {
+const CadastrarLaboratorio: React.FC = ({ children }) => {
   const formRef = useRef<FormHandles>(null);
   const { id } = useParams<ParamTypes>();
   const history = useHistory();
@@ -37,7 +37,7 @@ const AddLaboratories: React.FC = ({ children }) => {
 
         //
 
-        history.push('/list_reagents');
+        history.push('/listar_reagentes');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -45,7 +45,7 @@ const AddLaboratories: React.FC = ({ children }) => {
         }
       }
     },
-    [history],
+    [history, id],
   );
 
   return (
@@ -64,4 +64,4 @@ const AddLaboratories: React.FC = ({ children }) => {
   );
 };
 
-export default AddLaboratories;
+export default CadastrarLaboratorio;
