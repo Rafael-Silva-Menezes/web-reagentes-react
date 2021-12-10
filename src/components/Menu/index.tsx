@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
 import { FiPower, FiHome, FiUser } from 'react-icons/fi';
 import { MdOutlineScience, MdWorkOutline } from 'react-icons/md';

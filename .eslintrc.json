@@ -49,6 +49,7 @@
     "no-unused-expressions": "off",
     "import/no-duplicates": "off",
     "@typescript-eslint/camelcase": "off",
+    "no-restricted-globals":"off",
     "no-console": "off",
     "camelcase": "off",
     "import/prefer-default-export": "off",
