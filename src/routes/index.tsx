@@ -6,11 +6,13 @@ import {
   Reagentes,
   CadastroReagentes,
   GerenciarReagentes,
-  Usuarios,
+  MenuUsuario,
   SolicitacaoCadastro,
   CadastrarLicenca,
   ListaReagentesCadastrados,
   EditarReagente,
+  MenuLaboratorio,
+  CadastrarLaboratorio,
 } from '../pages';
 import Menu from '../components/Menu';
 
@@ -19,6 +21,7 @@ const Routes: React.FC = () => {
     <Switch>
       <Menu>
         <Route path="/dashboard" component={Dashboard} />
+
         <Route path="/reagentes" component={Reagentes} />
         <Route path="/cadastrar_reagentes" component={CadastroReagentes} />
         <Route path="/gerenciar_reagentes" component={GerenciarReagentes} />
@@ -26,8 +29,11 @@ const Routes: React.FC = () => {
         <Route path="/editar_reagente/:id" component={EditarReagente} />
         <Route path="/cadastrar_licenca" component={CadastrarLicenca} />
 
-        <Route path="/usuarios" component={Usuarios} />
+        <Route path="/usuarios" component={MenuUsuario} />
         <Route path="/solicitacao-cadastro" component={SolicitacaoCadastro} />
+
+        <Route path="/laboratorios" component={MenuLaboratorio} />
+        <Route path="/cadastrar_laboratorio" component={CadastrarLaboratorio} />
       </Menu>
     </Switch>
   );

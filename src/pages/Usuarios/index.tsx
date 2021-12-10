@@ -3,7 +3,7 @@ import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import { Container, CardButton, Span } from './styles';
 import { SolicitacaoCadastro } from '..';
 
-const UserMenu: React.FC = () => {
+const MenuUsuario: React.FC = () => {
   const { path, url } = useRouteMatch();
 
   return (
@@ -14,4 +14,4 @@ const UserMenu: React.FC = () => {
     </Container>
   );
 };
-export default UserMenu;
+export default MenuUsuario;

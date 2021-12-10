@@ -24,7 +24,7 @@ import profileImg from '../../assets/profile.jpg';
 const Dashboard: React.FC = ({ children }) => {
   const menu = [
     { title: 'Página Principal', url: '/dashboard', icon: <FiHome /> },
-    { title: 'Laboratórios', url: '/', icon: <MdWorkOutline /> },
+    { title: 'Laboratórios', url: '/laboratorios', icon: <MdWorkOutline /> },
     { title: 'Usuários', url: '/usuarios', icon: <FiUser /> },
     { title: 'Reagentes', url: '/reagentes', icon: <MdOutlineScience /> },
   ];
@@ -33,7 +33,7 @@ const Dashboard: React.FC = ({ children }) => {
     <Admin>
       <Header>
         <Toolbar>
-          <Title>Página Principal</Title>
+          <Title />
           <Profile>
             <Logout to="/">
               <FiPower />

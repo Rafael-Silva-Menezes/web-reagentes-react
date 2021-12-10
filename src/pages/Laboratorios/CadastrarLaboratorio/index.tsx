@@ -3,7 +3,6 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import * as Yup from 'yup';
-import { FiArrowLeft } from 'react-icons/fi';
 import getValidationErrors from '../../../utils/getValidationErrors';
 
 import { ParamTypes } from '../../../interfaces/params';
@@ -17,7 +16,7 @@ interface FormData {
   code: string;
 }
 
-const EditarReagente: React.FC = ({ children }) => {
+const CadastrarLaboratorio: React.FC = ({ children }) => {
   const formRef = useRef<FormHandles>(null);
   const { id } = useParams<ParamTypes>();
   const history = useHistory();
@@ -51,21 +50,18 @@ const EditarReagente: React.FC = ({ children }) => {
 
   return (
     <>
-      <Title>Edição de Reagente</Title>
-      <Header>
-        <Link to="/listar_reagentes">
-          <FiArrowLeft size={40} />
-        </Link>
-      </Header>
+      <Title>Cadastro de Laboratório</Title>
       <Content>
         <Form ref={formRef} onSubmit={handleSubmit}>
+          <Input name="campus" placeholder="Campus" />
+          <Input name="department" placeholder="Departamento" />
           <Input name="name" placeholder="Nome" />
-          <Input name="code" placeholder="Código" />
-          <Button type="submit">Editar</Button>
+          <Input name="laboratoryCode" placeholder="Código do Laboratório" />
+          <Button type="submit">Cadastrar</Button>
         </Form>
       </Content>
     </>
   );
 };
 
-export default EditarReagente;
+export default CadastrarLaboratorio;
