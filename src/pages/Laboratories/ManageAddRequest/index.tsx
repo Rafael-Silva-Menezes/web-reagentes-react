@@ -61,7 +61,7 @@ const BondRequest: React.FC = () => {
   }, [call, list.length]);
 
   const accept = (id: string, name: string): void => {
-    const result = confirm(`Aceitar solicitação de cadastro de ${name}?`);
+    const result = confirm(`Criar laboratório ${name}?`);
     if (result) {
       // try {
       //   api.put(`/users/approve/${id}`).then(response => {
@@ -76,9 +76,7 @@ const BondRequest: React.FC = () => {
   };
 
   const deny = (id: string, name: string): void => {
-    const result = confirm(
-      `Deseja realmente negar a solicitação de cadastro de ${name}?`,
-    );
+    const result = confirm(`Excluir a solicitação de cadastro de ${name}?`);
     if (result) {
       // try {
       //   api.put(`/users/approve/${id}`).then(response => {
