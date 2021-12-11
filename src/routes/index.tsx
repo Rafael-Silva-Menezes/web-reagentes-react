@@ -19,8 +19,11 @@ import AddLicense from '../pages/Reagents/AddLicense';
 import MenuUsers from '../pages/Users';
 import RegistrationRequest from '../pages/Users/RegistrationRequest';
 import MenuLaboratory from '../pages/Laboratories';
-import BondRequest from '../pages/Laboratories/BondRequest';
+import ManageLaboratory from '../pages/Laboratories/ManageLaboratory';
 import AddLaboratories from '../pages/Laboratories/AddLaboratories';
+import EditLaboratory from '../pages/Laboratories/EditLaboratory';
+import BondRequest from '../pages/Laboratories/BondRequest';
+import BondManage from '../pages/Laboratories/BondManage';
 
 const Routes: React.FC = () => {
   return (
@@ -54,7 +57,18 @@ const Routes: React.FC = () => {
         />
         <Route path="/laboratories" isPrivate component={MenuLaboratory} />
         <Route path="/add_laboratory" isPrivate component={AddLaboratories} />
+        <Route
+          path="/manage_laboratory"
+          isPrivate
+          component={ManageLaboratory}
+        />
         <Route path="/bond_request" isPrivate component={BondRequest} />
+        <Route
+          path="/edit_laboratory/:id"
+          isPrivate
+          component={EditLaboratory}
+        />
+        <Route path="/bond_manage/:id" isPrivate component={BondManage} />
       </Menu>
     </Switch>
   );
