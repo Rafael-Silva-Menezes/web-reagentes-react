@@ -58,6 +58,7 @@ const ResetPassword: React.FC = () => {
         await api.patch('users/updatePassword', {
           password,
           passwordConfirmation,
+          accessToken,
         });
 
         history.push('/');
