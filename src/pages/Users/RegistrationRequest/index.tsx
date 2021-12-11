@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import React, { useState, useEffect } from 'react';
 import { FiThumbsUp, FiThumbsDown } from 'react-icons/fi';
 import Loader from 'react-loader-spinner';
@@ -23,13 +24,17 @@ const RegistrationRequest: React.FC = () => {
   useEffect(() => {
     if (list.length === 0 && !call) {
       setLoading(true);
-      api.get(`/users/list/pending`).then(listPending => {
-        setList(listPending.data);
-        setLoading(false);
-        setCall(true);
-      });
+      getUsers();
+      setCall(true);
     }
   }, [call, list.length]);
+
+  const getUsers = (): void => {
+    api.get(`/users/list/pending`).then(listPending => {
+      setList(listPending.data);
+      setLoading(false);
+    });
+  };
 
   const accept = (id: string, name: string): void => {
     const result = confirm(`Aceitar solicitação de cadastro de ${name}?`);
@@ -41,6 +46,7 @@ const RegistrationRequest: React.FC = () => {
             alert('Não foi possível realizar a operação.');
         });
         alert('Usuário aprovado com sucesso!');
+        getUsers();
       } catch (err) {
         alert(err);
       }
@@ -53,11 +59,11 @@ const RegistrationRequest: React.FC = () => {
     );
     if (result) {
       try {
-        api.put(`/users/disapprove/${id}`).then(response => {
-          console.log(response);
+        api.delete(`/users/disapprove/${id}`).then(response => {
           if (response.status > 300)
             alert('Não foi possível realizar a operação.');
           alert('Solicitação negada com sucesso.');
+          getUsers();
         });
       } catch (err) {
         alert(err);
