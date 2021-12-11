@@ -23,20 +23,11 @@ const RegistrationRequest: React.FC = () => {
   useEffect(() => {
     if (list.length === 0 && !call) {
       setLoading(true);
-      api
-        .post('/users/login', {
-          email: 'admin@academico.ufs.br',
-          password: 'admin',
-        })
-        .then(response => {
-          api.defaults.headers.common['x-access-token'] =
-            response.data.accessToken;
-          api.get(`/users/list/pending`).then(listPending => {
-            setList(listPending.data);
-            setLoading(false);
-            setCall(true);
-          });
-        });
+      api.get(`/users/list/pending`).then(listPending => {
+        setList(listPending.data);
+        setLoading(false);
+        setCall(true);
+      });
     }
   }, [call, list.length]);
 
