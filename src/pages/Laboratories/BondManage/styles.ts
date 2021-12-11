@@ -1,12 +1,26 @@
 import styled from 'styled-components';
+import { FiThumbsUp, FiThumbsDown } from 'react-icons/fi';
+import { shade } from 'polished';
 
 const primaryColor = '#081a51';
 
 export const Container = styled.div`
   height: 100%;
   padding: 0.1rem;
-  margin-top: 3rem;
+  margin-top: 2rem;
   font-weight: 100;
+`;
+
+export const Accept = styled(FiThumbsUp)`
+  color: ${primaryColor};
+  cursor: pointer;
+  margin: auto 0.4rem auto 0.4rem;
+`;
+
+export const Decline = styled(FiThumbsDown)`
+  color: #008080;
+  cursor: pointer;
+  margin: auto 0.4rem auto 0.4rem;
 `;
 
 export const Table = styled.table`
@@ -27,7 +41,7 @@ export const TextId = styled.td`
   text-align: left;
   max-width: 50px;
   width: auto;
-  min-width: 100px;
+  min-width: 70px;
 `;
 
 export const TextName = styled.td`
@@ -42,22 +56,32 @@ export const TextNumber = styled.td`
 `;
 
 export const Buttons = styled.td`
-  max-width: 60px;
+  max-width: 30px;
   width: auto;
   min-width: 10px;
-`;
-
-export const Loading = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin: 3rem auto auto auto;
-  align-items: center;
-  justify-content: center;
-  width: 80%;
 `;
 
 export const SearchContainer = styled.div`
   display: flex;
   margin-top: 2rem;
   width: 30%;
+`;
+
+export const Header = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+
+  a {
+    color: #081a51;
+    align-self: flex-start;
+    margin-left: 40px;
+  }
+
+  a:hover {
+    color: ${shade(0.2, '#081a51')};
+  }
 `;
