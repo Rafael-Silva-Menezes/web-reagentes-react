@@ -121,7 +121,7 @@ const ManageLaboratory: React.FC = () => {
                 <div>
                   <ButtonActions
                     icon={FiUsers}
-                    to={`${path.laboratories.bond}/${item.code}`}
+                    to={`${path.laboratories.bonds}/${item.code}`}
                   />
                   <ButtonActions
                     icon={FiEdit}
