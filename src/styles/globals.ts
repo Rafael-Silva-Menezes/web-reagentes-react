@@ -11,7 +11,8 @@ export default createGlobalStyle`
 
 body{
   background:#081A51;
-  color: #FFFFFF;
+  //color: #FFFFFF;
+  color:#081a51;
   -webkit-font-smoothing:antialiased;
 }
 
@@ -28,6 +29,14 @@ h1,h2,h3,h4,h5,h6, strong {
 
 button{
   cursor: pointer;
+}
+
+img{
+
+margin-top:20px;
+max-width:100%;
+max-height:100%;
+border-radius: 5px;
 }
 
 `;

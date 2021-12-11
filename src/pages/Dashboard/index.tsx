@@ -1,47 +1,70 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
+import { FiPower, FiHome, FiUser } from 'react-icons/fi';
+import { MdOutlineScience, MdWorkOutline} from 'react-icons/md';
+import { GrDocumentText } from 'react-icons/gr';
+import { GiChemicalDrop } from 'react-icons/gi';
 
 import {
-  DashboardContainer,
   DashboardItem,
-  DashboardItemCol,
   DashboardItemFull,
+  DashboardItemFull1,
   Card,
+  IconSpan,
 } from './styles';
 
 import Table from '../../components/Table';
+import Title from '../../components/Title';
+import grafico from '../../assets/validade2.png';
+import gconsumo from '../../assets/consumo.png';
 
-const Dashboard: React.FC = ({ children }) => {
+
+const DashboardReagentes: React.FC = ({ children }) => {
   return (
-    <DashboardContainer>
+    <>
+      <Title>Olá, Bem-Vindo</Title>
       <DashboardItem>
         <Card>
-          <strong>41</strong> Foobars
+          <IconSpan>
+            <FiUser />
+          </IconSpan>
+          <strong>Usuários</strong>
+          <strong>1000</strong>
+
+        </Card>
+        <Card>
+          <IconSpan>
+            <MdOutlineScience />
+          </IconSpan>
+          <strong>Reagentes</strong>
+          <strong>100</strong>
+        </Card>
+        <Card>
+          <IconSpan>
+            <GrDocumentText />
+          </IconSpan>
+          <strong>Licenças</strong>
+          <strong>5</strong>
+        </Card>
+        <Card>
+          <IconSpan>
+            <GiChemicalDrop />
+          </IconSpan>
+          <strong>Consumo</strong>
+          <strong>50L</strong>
         </Card>
       </DashboardItem>
       <DashboardItem>
-        <Card>
-          <strong>81.712</strong> Doohickeys
-        </Card>
+        <DashboardItemFull>
+          <strong>Consumo Mensal</strong>
+          <img src={gconsumo} alt="consumo" />
+        </DashboardItemFull>
+        <DashboardItemFull1>
+          <strong>Status da Validade</strong>
+          <img src={grafico} alt="validade" />
+        </DashboardItemFull1>
       </DashboardItem>
-      <DashboardItemFull>
-        <Card>
-          <img src="https://imgs.xkcd.com/comics/decline.png" alt="" />
-        </Card>
-      </DashboardItemFull>
-      <DashboardItemCol>
-        <Card>A</Card>
-      </DashboardItemCol>
-      <DashboardItemCol>
-        <Card>B</Card>
-      </DashboardItemCol>
-      <DashboardItemCol>
-        <Card>C</Card>
-      </DashboardItemCol>
-      <DashboardItemCol>
-        <Card>D</Card>
-      </DashboardItemCol>
-    </DashboardContainer>
+    </>
   );
 };
-export default Dashboard;
+export default DashboardReagentes;

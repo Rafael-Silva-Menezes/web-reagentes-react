@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const DashboardContainer = styled.div`
+/* export const DashboardContainer = styled.div`
   --column-count: 2;
   // Flexbox Fallback
   display: flex;
@@ -44,7 +44,7 @@ export const DashboardItemFull = styled.div`
   grid-column: 1 / -1;
 `;
 
-export const Card = styled.div`
+ export const Card = styled.div`
   height: 100%;
   padding: 1rem;
   font-size: 2rem;
@@ -59,4 +59,57 @@ export const Card = styled.div`
       width: 100%;
     }
   }
+`; */
+
+export const DashboardItem = styled.div`
+  display: flex;
+  margin-top:1rem;
+
 `;
+
+export const DashboardItemFull = styled.div`
+  width: 55%;
+  height: 55%;
+  border-radius: 10px;
+  margin: 1rem;
+  margin-top:20px;
+`;
+export const DashboardItemFull1 = styled.div`
+  width: 45%;
+  height: 55%;
+  border-radius: 10px;
+  margin: 1rem;
+  padding-left:200px;
+  margin-top:10px;
+`;
+
+export const Card = styled.div`
+  display: grid;
+  height: 8rem;
+  width: 15rem;
+  border-radius: 20px;
+  margin: 1rem;
+  background-color:rgb(208, 242, 255);
+  color: white;
+  text-decoration: none;
+  text-align: center;
+
+  strong{
+    margin-top:0;
+    color:#081a51;
+
+  }
+`;
+
+export const IconSpan = styled.span`
+  background-image: linear-gradient(
+  135deg, rgba(12, 83, 183, 0) 0%, rgba(12, 83, 183, 0.24) 100%);
+  color: rgb(0,0,0);
+  height: 50px;
+  width: 50px;
+  margin: 1rem;
+  border-radius: 50%;
+  padding: .9rem ;
+`;
+
+
