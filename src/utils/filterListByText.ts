@@ -17,8 +17,12 @@ export default function filterListByText({
   for (let i = 0; i < list.length; i++) {
     const value = filter.toLowerCase();
     for (let j = 0; j < fieldsToSearch.length; j++) {
-      if (list[i][fieldsToSearch[j]].toLowerCase().includes(value))
+      if (
+        list[i][fieldsToSearch[j]].toLowerCase().includes(value) &&
+        !filteredList.includes(list[i])
+      ) {
         filteredList.push(list[i]);
+      }
     }
   }
   return filteredList;
