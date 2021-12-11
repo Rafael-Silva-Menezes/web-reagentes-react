@@ -23,10 +23,13 @@ const ButtonActions: React.FC<ButtonProps> = ({
   color,
   ...rest
 }) => {
-  const redirect = !to ? '' : to;
-
-  return (
-    <Link to={redirect}>
+  return !to ? (
+    <Container onClick={onClick} color={color} type="button" {...rest}>
+      {loading ? 'Carregando...' : children}
+      {Icon && <Icon size={20} />}
+    </Container>
+  ) : (
+    <Link to={to}>
       <Container onClick={onClick} color={color} type="button" {...rest}>
         {loading ? 'Carregando...' : children}
         {Icon && <Icon size={20} />}
