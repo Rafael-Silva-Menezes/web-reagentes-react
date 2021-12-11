@@ -18,12 +18,16 @@ import EditReagents from '../pages/Reagents/EditReagents';
 import AddLicense from '../pages/Reagents/AddLicense';
 import MenuUsers from '../pages/Users';
 import RegistrationRequest from '../pages/Users/RegistrationRequest';
-import MenuLaboratory from '../pages/Laboratories';
-import ManageLaboratory from '../pages/Laboratories/ManageLaboratory';
-import AddLaboratories from '../pages/Laboratories/AddLaboratories';
-import EditLaboratory from '../pages/Laboratories/EditLaboratory';
-import BondRequest from '../pages/Laboratories/BondRequest';
-import ManageLaboratoryBonds from '../pages/Laboratories/ManageLaboratoryBonds';
+import {
+  MenuLaboratory,
+  ManageLaboratory,
+  AddRequest,
+  AddLaboratories,
+  EditLaboratory,
+  ManageAddRequest,
+  ManageLaboratoryBonds,
+  BondRequest,
+} from '../pages/Laboratories/exports';
 
 export const path = {
   laboratories: {
@@ -31,7 +35,10 @@ export const path = {
     add: '/add_laboratory',
     manage: '/manage_laboratory',
     edit: '/edit_laboratory',
-    bond: '/manage_laboratory_bonds',
+    bonds: '/manage_laboratory_bonds',
+    bondRequest: '/bond_request',
+    addRequest: '/add_laboratory_request',
+    manageAddRequest: '/manage_add_request',
   },
 };
 
@@ -80,16 +87,30 @@ const Routes: React.FC = () => {
           isPrivate
           component={ManageLaboratory}
         />
-        <Route path="/bond_request" isPrivate component={BondRequest} />
+        <Route
+          path={path.laboratories.manageAddRequest}
+          isPrivate
+          component={ManageAddRequest}
+        />
         <Route
           path={`${path.laboratories.edit}/:id`}
           isPrivate
           component={EditLaboratory}
         />
         <Route
-          path={`${path.laboratories.bond}/:id`}
+          path={`${path.laboratories.bonds}/:id`}
           isPrivate
           component={ManageLaboratoryBonds}
+        />
+        <Route
+          path={`${path.laboratories.addRequest}`}
+          isPrivate
+          component={AddRequest}
+        />
+        <Route
+          path={`${path.laboratories.bondRequest}`}
+          isPrivate
+          component={BondRequest}
         />
       </Menu>
     </Switch>
