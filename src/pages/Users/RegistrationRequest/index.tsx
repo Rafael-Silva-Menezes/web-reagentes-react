@@ -10,14 +10,18 @@ import {
   TextNumber,
   Buttons,
   Loading,
+  SearchContainer,
 } from './styles';
 import Title from '../../../components/Title';
 import ButtonActions from '../../../components/ButtonActions';
 import { ListUsersPending } from '../../../interfaces/users';
+import SearchInput from '../../../components/SearchInput';
 import api from '../../../services/api';
+import filterListByText from '../../../utils/filterListByText';
 
 const RegistrationRequest: React.FC = () => {
-  const [list, setList] = useState<ListUsersPending[]>([]);
+  const [list, setList] = useState<any[]>([]);
+  const [filterList, setFilterList] = useState<any[]>([]);
   const [call, setCall] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -32,6 +36,7 @@ const RegistrationRequest: React.FC = () => {
   const getUsers = (): void => {
     api.get(`/users/list/pending`).then(listPending => {
       setList(listPending.data);
+      setFilterList(listPending.data);
       setLoading(false);
     });
   };
@@ -71,9 +76,30 @@ const RegistrationRequest: React.FC = () => {
     }
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    if (e.target.value === '') setFilterList(list);
+    else
+      setFilterList(
+        filterListByText({
+          list,
+          fieldsToSearch: ['name', 'email', 'status'],
+          filter: e.target.value,
+        }),
+      );
+  };
+
   return (
     <>
       <Title>Solicitações de cadastro pendentes</Title>
+      <SearchContainer>
+        <SearchInput
+          type="text"
+          placeholder="Pesquisar"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            handleChange(e);
+          }}
+        />
+      </SearchContainer>
       <Container>
         {loading ? (
           <Loading>
@@ -86,7 +112,7 @@ const RegistrationRequest: React.FC = () => {
           </Loading>
         ) : (
           <Table>
-            {list.map(item => (
+            {filterList.map(item => (
               <tr key={item.id}>
                 <TextId>{item.email}</TextId>
                 <TextName>{item.name}</TextName>

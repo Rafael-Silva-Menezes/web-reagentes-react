@@ -55,3 +55,9 @@ export const Loading = styled.div`
   justify-content: center;
   width: 80%;
 `;
+
+export const SearchContainer = styled.div`
+  display: flex;
+  margin-top: 2rem;
+  width: 30%;
+`;
