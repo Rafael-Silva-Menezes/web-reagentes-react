@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { FiEdit, FiTrash2, FiUsers } from 'react-icons/fi';
-import { Container, Table, TextId, TextName, Buttons } from './styles';
+import {
+  Container,
+  Table,
+  TextId,
+  TextName,
+  Buttons,
+  SearchContainer,
+} from './styles';
 import filterListByText from '../../../utils/filterListByText';
-import Input from '../../../components/Input';
+import SearchInput from '../../../components/SearchInput';
 import Title from '../../../components/Title';
 import ButtonActions from '../../../components/ButtonActions';
 
@@ -84,12 +91,15 @@ const ListaReagentesCadastrados: React.FC = () => {
   return (
     <>
       <Title>Reagentes Licenciados</Title>
-      <input
-        type="text"
-        onChange={e => {
-          handleChange(e);
-        }}
-      />
+      <SearchContainer>
+        <SearchInput
+          type="text"
+          placeholder="Pesquisar"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            handleChange(e);
+          }}
+        />
+      </SearchContainer>
       <Container>
         <Table>
           {filterList.map(item => (

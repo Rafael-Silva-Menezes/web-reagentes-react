@@ -6,7 +6,7 @@ const primaryColor = '#081a51';
 export const Container = styled.div`
   height: 100%;
   padding: 0.1rem;
-  margin-top: 3rem;
+  margin-top: 2rem;
   font-weight: 100;
 `;
 
@@ -58,4 +58,10 @@ export const Buttons = styled.td`
   max-width: 60px;
   width: auto;
   min-width: 10px;
+`;
+
+export const SearchContainer = styled.div`
+  display: flex;
+  margin-top: 2rem;
+  width: 30%;
 `;
