@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { FiEdit, FiTrash2, FiUsers } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
 import {
   Container,
   Table,
@@ -10,7 +11,7 @@ import {
   SearchContainer,
 } from './styles';
 import filterListByText from '../../../utils/filterListByText';
-import Input from '../../../components/Input';
+import { path } from '../../../routes';
 import Title from '../../../components/Title';
 import ButtonActions from '../../../components/ButtonActions';
 import SearchInput from '../../../components/SearchInput';
@@ -35,6 +36,7 @@ const ManageLaboratory: React.FC = () => {
   const [filterList, setFilterList] = useState<any[]>([]);
   const [call, setCall] = useState(false);
   const [loading, setLoading] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
     function loadList(): void {
@@ -65,20 +67,24 @@ const ManageLaboratory: React.FC = () => {
     // }
   }, [call, list.length]);
 
-  const deleteByCode = (code: string, reagent: string): void => {
-    const result = confirm(`Deseja realmente excluir o reagente ${reagent}?`);
-    if (result) {
-      // try {
-      //   api.put(`/users/approve/${id}`).then(response => {
-      //     console.log(response);
-      //     if (response.status > 300)
-      //       alert('Não foi possível realizar a operação.');
-      //   });
-      // } catch (err) {
-      //   alert(err);
-      // }
-    }
-  };
+  const deleteByCode = useCallback(
+    (code: string, reagent: string): void => {
+      const result = confirm(`Deseja realmente excluir o reagente ${reagent}?`);
+      if (result) {
+        // try {
+        //   api.put(`/users/approve/${id}`).then(response => {
+        //     console.log(response);
+        //     if (response.status > 300)
+        //       alert('Não foi possível realizar a operação.');
+        //   });
+        // } catch (err) {
+        //   alert(err);
+        // }
+      }
+      history.push(path.laboratories.manage);
+    },
+    [history],
+  );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     if (e.target.value === '') setFilterList(list);
@@ -115,11 +121,11 @@ const ManageLaboratory: React.FC = () => {
                 <div>
                   <ButtonActions
                     icon={FiUsers}
-                    to={`/bond_manage/${item.code}`}
+                    to={`${path.laboratories.bond}/${item.code}`}
                   />
                   <ButtonActions
                     icon={FiEdit}
-                    to={`/edit_laboratory/${item.code}`}
+                    to={`${path.laboratories.edit}/${item.code}`}
                   />
                   <ButtonActions
                     color="#081a51"

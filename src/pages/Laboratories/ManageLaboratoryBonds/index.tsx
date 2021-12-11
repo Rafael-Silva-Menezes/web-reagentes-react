@@ -15,6 +15,7 @@ import filterListByText from '../../../utils/filterListByText';
 import Title from '../../../components/Title';
 import ButtonActions from '../../../components/ButtonActions';
 import SearchInput from '../../../components/SearchInput';
+import { path } from '../../../routes';
 
 const content = [
   {
@@ -98,7 +99,7 @@ const BondManage: React.FC = () => {
     <>
       <Title>Gerenciamento de Vínculos</Title>
       <Header>
-        <Link to="/manage_laboratory">
+        <Link to={path.laboratories.manage}>
           <FiArrowLeft size={40} />
         </Link>
       </Header>

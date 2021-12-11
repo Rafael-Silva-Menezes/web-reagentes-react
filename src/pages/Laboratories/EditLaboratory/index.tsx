@@ -11,6 +11,7 @@ import { Content, Header } from './styles';
 import Input from '../../../components/Input';
 import Button from '../../../components/Button';
 import Title from '../../../components/Title';
+import { path } from '../../../routes';
 
 interface FormData {
   campus: string;
@@ -40,7 +41,7 @@ const EditLaboratory: React.FC = ({ children }) => {
           abortEarly: false,
         });
 
-        history.push('/manage_laboratory');
+        history.push(path.laboratories.manage);
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -55,7 +56,7 @@ const EditLaboratory: React.FC = ({ children }) => {
     <>
       <Title>Edição de Reagente</Title>
       <Header>
-        <Link to="/manage_laboratory">
+        <Link to={path.laboratories.manage}>
           <FiArrowLeft size={40} />
         </Link>
       </Header>

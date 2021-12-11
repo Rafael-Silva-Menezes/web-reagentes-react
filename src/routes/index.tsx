@@ -23,7 +23,17 @@ import ManageLaboratory from '../pages/Laboratories/ManageLaboratory';
 import AddLaboratories from '../pages/Laboratories/AddLaboratories';
 import EditLaboratory from '../pages/Laboratories/EditLaboratory';
 import BondRequest from '../pages/Laboratories/BondRequest';
-import BondManage from '../pages/Laboratories/BondManage';
+import ManageLaboratoryBonds from '../pages/Laboratories/ManageLaboratoryBonds';
+
+export const path = {
+  laboratories: {
+    menu: '/laboratories',
+    add: '/add_laboratory',
+    manage: '/manage_laboratory',
+    edit: '/edit_laboratory',
+    bond: '/manage_laboratory_bonds',
+  },
+};
 
 const Routes: React.FC = () => {
   return (
@@ -55,20 +65,32 @@ const Routes: React.FC = () => {
           isPrivate
           component={RegistrationRequest}
         />
-        <Route path="/laboratories" isPrivate component={MenuLaboratory} />
-        <Route path="/add_laboratory" isPrivate component={AddLaboratories} />
         <Route
-          path="/manage_laboratory"
+          path={path.laboratories.menu}
+          isPrivate
+          component={MenuLaboratory}
+        />
+        <Route
+          path={path.laboratories.add}
+          isPrivate
+          component={AddLaboratories}
+        />
+        <Route
+          path={path.laboratories.manage}
           isPrivate
           component={ManageLaboratory}
         />
         <Route path="/bond_request" isPrivate component={BondRequest} />
         <Route
-          path="/edit_laboratory/:id"
+          path={`${path.laboratories.edit}/:id`}
           isPrivate
           component={EditLaboratory}
         />
-        <Route path="/bond_manage/:id" isPrivate component={BondManage} />
+        <Route
+          path={`${path.laboratories.bond}/:id`}
+          isPrivate
+          component={ManageLaboratoryBonds}
+        />
       </Menu>
     </Switch>
   );

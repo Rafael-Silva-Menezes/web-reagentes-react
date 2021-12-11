@@ -5,6 +5,7 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 import * as Yup from 'yup';
 import getValidationErrors from '../../../utils/getValidationErrors';
 
+import { path } from '../../../routes';
 import { ParamTypes } from '../../../interfaces/params';
 import { Content, Header } from './styles';
 import Input from '../../../components/Input';
@@ -37,7 +38,7 @@ const CadastrarLaboratorio: React.FC = ({ children }) => {
 
         //
 
-        history.push('/listar_reagentes');
+        history.push(path.laboratories.manage);
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
