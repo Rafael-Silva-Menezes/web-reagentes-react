@@ -7,6 +7,9 @@ const MenuLaboratory: React.FC = () => {
       <CardButton to="/add_laboratory">
         <Span>Cadastrar Laboratório</Span>
       </CardButton>
+      <CardButton to="/bond_request">
+        <Span>Gerenciar Laboratórios</Span>
+      </CardButton>
     </Container>
   );
 };
