@@ -55,7 +55,7 @@ const ResetPassword: React.FC = () => {
           throw new Error();
         }
 
-        await api.post('/users/updatePassword', {
+        await api.post('users/updatePassword', {
           password,
           password_confirmation,
         });
