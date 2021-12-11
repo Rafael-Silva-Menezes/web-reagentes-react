@@ -54,7 +54,7 @@ const AuthProvider: React.FC = ({ children }) => {
     localStorage.setItem('@Reagentes:token', accessToken);
     localStorage.setItem('@Reagentes:user', JSON.stringify(user));
 
-    api.defaults.headers.authorization = `${accessToken}`;
+    api.defaults.headers['x-access-token'] = `${accessToken}`;
 
     setData({ accessToken, user });
   }, []);
