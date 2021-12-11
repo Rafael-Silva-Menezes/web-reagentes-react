@@ -17,7 +17,7 @@ import { Container, Content, AnimationContainer } from '../styles';
 import api from '../../../services/api';
 
 interface ResetPasswordFormData {
-  password_confirmation: string;
+  passwordConfirmation: string;
   password: string;
 }
 
@@ -47,18 +47,18 @@ const ResetPassword: React.FC = () => {
           abortEarly: false,
         });
 
-        const { password, password_confirmation } = data;
+        const { password, passwordConfirmation } = data;
 
-        const token = location.search.replace('?token=', '');
+        const accessToken = location.search.replace('?accessToken=', '');
 
-        if (!token) {
+        if (!accessToken) {
           throw new Error();
         }
 
-        await api.post('/users/assingPassword', {
+        await api.patch('users/updatePassword', {
           password,
-          password_confirmation,
-          token,
+          passwordConfirmation,
+          accessToken,
         });
 
         history.push('/');
@@ -98,7 +98,7 @@ const ResetPassword: React.FC = () => {
             />
 
             <Input
-              name="password_confirmation"
+              name="passwordConfirmation"
               icon={FiLock}
               type="password"
               placeholder="Confirmação da senha "
