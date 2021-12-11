@@ -40,6 +40,7 @@ const RegistrationRequest: React.FC = () => {
           if (response.status > 300)
             alert('Não foi possível realizar a operação.');
         });
+        alert('Usuário aprovado com sucesso!');
       } catch (err) {
         alert(err);
       }
@@ -51,15 +52,16 @@ const RegistrationRequest: React.FC = () => {
       `Deseja realmente negar a solicitação de cadastro de ${name}?`,
     );
     if (result) {
-      // try {
-      //   api.put(`/users/approve/${id}`).then(response => {
-      //     console.log(response);
-      //     if (response.status > 300)
-      //       alert('Não foi possível realizar a operação.');
-      //   });
-      // } catch (err) {
-      //   alert(err);
-      // }
+      try {
+        api.put(`/users/disapprove/${id}`).then(response => {
+          console.log(response);
+          if (response.status > 300)
+            alert('Não foi possível realizar a operação.');
+          alert('Solicitação negada com sucesso.');
+        });
+      } catch (err) {
+        alert(err);
+      }
     }
   };
 
