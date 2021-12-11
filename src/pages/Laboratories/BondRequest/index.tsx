@@ -1,4 +1,6 @@
-import React, { useCallback, useRef } from 'react';
+/* eslint-disable no-return-assign */
+/* eslint-disable no-param-reassign */
+import React, { useCallback, useRef, useState } from 'react';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { Link, useHistory, useParams } from 'react-router-dom';
@@ -8,55 +10,56 @@ import getValidationErrors from '../../../utils/getValidationErrors';
 import { path } from '../../../routes';
 import { ParamTypes } from '../../../interfaces/params';
 import { Content, Header } from './styles';
-import Input from '../../../components/Input';
-import Button from '../../../components/Button';
+import ButtonState from '../../../components/ButtonState';
 import Title from '../../../components/Title';
+import InputSelect from '../../../components/InputSelect';
 
 interface FormData {
-  name: string;
-  code: string;
+  laboratory: string;
 }
+
+const content = [
+  {
+    key: 'Química',
+    label: 'Química A',
+    value: '1',
+  },
+  {
+    key: 'Química',
+    label: 'Química B',
+    value: '2',
+  },
+];
 
 const BondRequest: React.FC = ({ children }) => {
   const formRef = useRef<FormHandles>(null);
   const { id } = useParams<ParamTypes>();
+  const [value, setValue] = useState('');
   const history = useHistory();
 
-  const handleSubmit = useCallback(
-    async (data: FormData) => {
-      try {
-        formRef.current?.setErrors({});
-
-        const schema = Yup.object().shape({
-          name: Yup.string().required('Nome do reagente é obrigatório'),
-          code: Yup.string().required('Código é obrigatório'),
-        });
-
-        await schema.validate(data, {
-          abortEarly: false,
-        });
-
-        //
-
-        history.push(path.laboratories.manage);
-      } catch (err) {
-        if (err instanceof Yup.ValidationError) {
-          const errors = getValidationErrors(err);
-          formRef.current?.setErrors(errors);
-        }
-      }
-    },
-    [history],
-  );
+  const handleSubmit = (): void => {
+    console.log(value);
+  };
 
   return (
     <>
       <Title>Solicitação de Vínculo a Laboratório</Title>
       <Content>
-        <Form ref={formRef} onSubmit={handleSubmit}>
-          <Input name="campus" placeholder="Campus" />
-          <Button type="submit">Solicitar</Button>
-        </Form>
+        <InputSelect
+          data={content}
+          name="laboratory"
+          value={value}
+          onChange={(e: { target: { value: any } }) => {
+            setValue(prev => (prev = e.target.value));
+          }}
+        />
+        <ButtonState
+          onClick={() => {
+            handleSubmit();
+          }}
+        >
+          Solicitar
+        </ButtonState>
       </Content>
     </>
   );
