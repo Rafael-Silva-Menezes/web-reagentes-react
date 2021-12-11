@@ -19,6 +19,7 @@ import AddLicense from '../pages/Reagents/AddLicense';
 import MenuUsers from '../pages/Users';
 import RegistrationRequest from '../pages/Users/RegistrationRequest';
 import MenuLaboratory from '../pages/Laboratories';
+import BondRequest from '../pages/Laboratories/BondRequest';
 import AddLaboratories from '../pages/Laboratories/AddLaboratories';
 
 const Routes: React.FC = () => {
@@ -53,6 +54,7 @@ const Routes: React.FC = () => {
         />
         <Route path="/laboratories" isPrivate component={MenuLaboratory} />
         <Route path="/add_laboratory" isPrivate component={AddLaboratories} />
+        <Route path="/bond_request" isPrivate component={BondRequest} />
       </Menu>
     </Switch>
   );
