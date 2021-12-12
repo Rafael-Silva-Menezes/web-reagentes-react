@@ -55,7 +55,7 @@ export const TextNumber = styled.td`
 `;
 
 export const Buttons = styled.td`
-  max-width: 60px;
+  max-width: 70px;
   width: auto;
   min-width: 10px;
 `;
