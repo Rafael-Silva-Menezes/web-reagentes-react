@@ -45,7 +45,6 @@ const RegistrationRequest: React.FC = () => {
     if (result) {
       try {
         api.put(`/users/approve/${id}`).then(response => {
-          console.log(response);
           if (response.status > 300)
             alert('Não foi possível realizar a operação.');
         });
