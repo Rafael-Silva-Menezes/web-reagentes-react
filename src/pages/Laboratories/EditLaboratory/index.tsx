@@ -54,7 +54,7 @@ const EditLaboratory: React.FC = ({ children }) => {
 
   return (
     <>
-      <Title>Edição de Reagente</Title>
+      <Title>Edição de Laboratório</Title>
       <Header>
         <Link to={path.laboratories.manage}>
           <FiArrowLeft size={40} />

@@ -65,3 +65,12 @@ export const SearchContainer = styled.div`
   margin-top: 2rem;
   width: 30%;
 `;
+
+export const Loading = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 3rem auto auto auto;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+`;
