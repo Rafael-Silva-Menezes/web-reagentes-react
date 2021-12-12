@@ -4,6 +4,8 @@ import { Form } from '@unform/web';
 import { useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import getValidationErrors from '../../../utils/getValidationErrors';
+import api from '../../../services/api';
+import { useToast } from '../../../hooks/toast';
 
 import { path } from '../../../routes';
 import { Content, Header } from './styles';
@@ -19,6 +21,7 @@ interface FormData {
 
 const AddLaboratory: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
+  const { addToast } = useToast();
   const history = useHistory();
 
   const handleSubmit = useCallback(
@@ -40,7 +43,19 @@ const AddLaboratory: React.FC = () => {
 
         console.log(JSON.stringify(data));
 
-        //
+        api
+          .post('/laboratories/add', {
+            name: data.name,
+            code: data.code,
+            department_name: data.department,
+          })
+          .then(response => {
+            addToast({
+              type: 'success',
+              title: 'Cadastro realizado!',
+              description: 'Laboratório cadastrado com sucesso!',
+            });
+          });
 
         history.push(path.laboratories.manage);
       } catch (err) {
@@ -48,9 +63,16 @@ const AddLaboratory: React.FC = () => {
           const errors = getValidationErrors(err);
           formRef.current?.setErrors(errors);
         }
+
+        addToast({
+          type: 'error',
+          title: 'Erro na autenticação',
+          description:
+            'Ocorreu um erro ao cadastrar o laboratório, cheque as credenciais.',
+        });
       }
     },
-    [history],
+    [[addToast, history]],
   );
 
   return (
