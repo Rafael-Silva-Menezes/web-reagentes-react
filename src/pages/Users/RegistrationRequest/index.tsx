@@ -14,7 +14,6 @@ import {
 } from './styles';
 import Title from '../../../components/Title';
 import ButtonActions from '../../../components/ButtonActions';
-import { ListUsersPending } from '../../../interfaces/users';
 import SearchInput from '../../../components/SearchInput';
 import api from '../../../services/api';
 import filterListByText from '../../../utils/filterListByText';
