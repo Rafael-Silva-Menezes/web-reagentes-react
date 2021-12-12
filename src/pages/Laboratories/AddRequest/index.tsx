@@ -13,6 +13,7 @@ import Button from '../../../components/Button';
 import Title from '../../../components/Title';
 
 interface FormData {
+  department: string;
   name: string;
   code: string;
 }
@@ -28,7 +29,10 @@ const AddRequest: React.FC = ({ children }) => {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
-          name: Yup.string().required('Nome do reagente é obrigatório'),
+          department: Yup.string().required(
+            'Nome do departamento é obrigatório',
+          ),
+          name: Yup.string().required('Nome do laboratório é obrigatório'),
           code: Yup.string().required('Código é obrigatório'),
         });
 
@@ -54,10 +58,9 @@ const AddRequest: React.FC = ({ children }) => {
       <Title>Solicitação de Criação de Laboratório</Title>
       <Content>
         <Form ref={formRef} onSubmit={handleSubmit}>
-          <Input name="campus" placeholder="Campus" />
           <Input name="department" placeholder="Departamento" />
-          <Input name="name" placeholder="Nome" />
-          <Input name="laboratoryCode" placeholder="Código do Laboratório" />
+          <Input name="name" placeholder="Nome do Laboratório" />
+          <Input name="code" placeholder="Código do Laboratório" />
           <Button type="submit">Solicitar</Button>
         </Form>
       </Content>
