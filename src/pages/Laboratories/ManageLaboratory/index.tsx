@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import React, { useState, useEffect, useCallback } from 'react';
 import { FiEdit, FiTrash2, FiUsers } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
@@ -39,33 +40,18 @@ const ManageLaboratory: React.FC = () => {
   const history = useHistory();
 
   useEffect(() => {
-    function loadList(): void {
-      setList(content);
-      setFilterList(content);
-    }
     if (list.length === 0 && !call) {
-      loadList();
+      setLoading(true);
+      getLaboratories();
       setCall(true);
     }
-
-    // if (list.length === 0 && !call) {
-    //   setLoading(true);
-    //   api
-    //     .post('/users/login', {
-    //       email: 'admin@academico.ufs.br',
-    //       password: 'admin',
-    //     })
-    //     .then(response => {
-    //       api.defaults.headers.common['x-access-token'] =
-    //         response.data.accessToken;
-    //       api.get(`/users/list/pending`).then(listPending => {
-    //         setList(listPending.data);
-    //         setLoading(false);
-    //         setCall(true);
-    //       });
-    //     });
-    // }
   }, [call, list.length]);
+
+  const getLaboratories = (): void => {
+    setList(content);
+    setFilterList(content);
+    setLoading(false);
+  };
 
   const deleteByCode = useCallback(
     (code: string, reagent: string): void => {
