@@ -26,7 +26,7 @@ import profileImg from '../../assets/profile.jpg';
 import { useAuth } from '../../hooks/auth';
 
 const Menu: React.FC = ({ children }) => {
-  const { signOut } = useAuth();
+  const { signOut, user } = useAuth();
   const nav = [
     { title: 'Página Principal', url: '/dashboard', icon: <FiHome /> },
     { title: 'Laboratórios', url: '/laboratories', icon: <MdWorkOutline /> },
@@ -46,9 +46,9 @@ const Menu: React.FC = ({ children }) => {
             </Logout>
             <div>
               <Link to="/profile">
-                <strong>Usuário</strong>
+                <strong>{user.name}</strong>
               </Link>
-              <img src={profileImg} alt="Profile" />
+              {/* <img src={profileImg} alt="Profile" /> */}
             </div>
           </Profile>
         </Toolbar>
