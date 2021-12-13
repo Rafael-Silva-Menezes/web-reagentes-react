@@ -46,7 +46,7 @@ const Menu: React.FC = ({ children }) => {
             </Logout>
             <div>
               <Link to="/profile">
-                <strong>{user.name}</strong>
+                <strong>{user?.name || 'User'}</strong>
               </Link>
               {/* <img src={profileImg} alt="Profile" /> */}
             </div>
