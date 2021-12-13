@@ -18,21 +18,7 @@ import SearchInput from '../../../components/SearchInput';
 import filterListByText from '../../../utils/filterListByText';
 import api from '../../../services/api';
 import { useToast } from '../../../hooks/toast';
-
-const content = [
-  {
-    campus: 'Aracaju',
-    department: 'Química',
-    name: 'Química A',
-    code: '1',
-  },
-  {
-    campus: 'Aracaju',
-    department: 'Química',
-    name: 'Química B',
-    code: '2',
-  },
-];
+import { path } from '../../../routes';
 
 const BondRequest: React.FC = () => {
   const [list, setList] = useState<any[]>([]);
@@ -75,30 +61,55 @@ const BondRequest: React.FC = () => {
   const accept = (id: string, name: string): void => {
     const result = confirm(`Criar laboratório ${name}?`);
     if (result) {
-      // try {
-      //   api.put(`/users/approve/${id}`).then(response => {
-      //     console.log(response);
-      //     if (response.status > 300)
-      //       alert('Não foi possível realizar a operação.');
-      //   });
-      // } catch (err) {
-      //   alert(err);
-      // }
+      try {
+        api.patch(`laboratories/request/${id}?approve=true`).then(response => {
+          if (response.status > 300)
+            addToast({
+              type: 'error',
+              title: 'Erro',
+              description: 'Ocorreu um erro ao criar o laboratório',
+            });
+          addToast({
+            type: 'success',
+            title: 'Sucesso!',
+            description: 'Laboratório criado com sucesso!',
+          });
+          history.push(path.laboratories.manage);
+        });
+      } catch (err) {
+        addToast({
+          type: 'error',
+          title: 'Erro',
+          description: 'Ocorreu um erro ao criar o laboratório',
+        });
+      }
     }
   };
 
   const deny = (id: string, name: string): void => {
     const result = confirm(`Excluir a solicitação de cadastro de ${name}?`);
     if (result) {
-      // try {
-      //   api.put(`/users/approve/${id}`).then(response => {
-      //     console.log(response);
-      //     if (response.status > 300)
-      //       alert('Não foi possível realizar a operação.');
-      //   });
-      // } catch (err) {
-      //   alert(err);
-      // }
+      try {
+        api.patch(`laboratories/request/${id}?approve=false`).then(response => {
+          if (response.status > 300)
+            addToast({
+              type: 'error',
+              title: 'Erro',
+              description: 'Ocorreu um erro ao excluir a solicitação',
+            });
+          addToast({
+            type: 'success',
+            title: 'Sucesso!',
+            description: 'Solicitação de cadastro negada com sucesso!',
+          });
+        });
+      } catch (err) {
+        addToast({
+          type: 'error',
+          title: 'Erro',
+          description: 'Ocorreu um erro ao excluir a solicitação',
+        });
+      }
     }
   };
 
