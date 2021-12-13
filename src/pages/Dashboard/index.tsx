@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { FiUsers } from 'react-icons/fi';
+import {
+  MdOutlineScience,
+  MdWorkOutline,
+  MdDocumentScanner,
+} from 'react-icons/md';
+import ButtonActions from '../../components/ButtonActions';
+import { path } from '../../routes';
 import api from '../../services/api';
 import {
   DashboardContainer,
@@ -8,31 +15,47 @@ import {
   DashboardItemFull,
   Card,
   Linker,
+  Table,
+  TextId,
+  TextName,
+  TextNumber,
 } from './styles';
-
-interface InfoData {
-  pendingRequestsNumber: number;
-}
 
 const Dashboard: React.FC = ({ children }) => {
   const [call, setCall] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [info, setInfo] = useState<InfoData>();
+  const [info, setInfo] = useState();
+  const [numberRequestUser, setNumberRequestUser] = useState(0);
+  const [numberRequestLab, setNumberRequestLab] = useState(0);
+  const [list, setList] = useState<any[]>([]);
 
   useEffect(() => {
     if (!call) {
       setLoading(true);
       getUsers();
+      getLaboratories();
+      getReagents();
       setCall(true);
     }
   }, [call]);
 
   const getUsers = (): void => {
     api.get(`/users/list/pending`).then(listUsers => {
-      setInfo(prevState => ({
-        ...prevState,
-        pendingRequestsNumber: listUsers.data.length,
-      }));
+      setNumberRequestUser(listUsers.data.length);
+      setLoading(false);
+    });
+  };
+
+  const getLaboratories = (): void => {
+    api.get('laboratories/list?status=pending').then(response => {
+      setNumberRequestLab(response.data.length);
+      setLoading(false);
+    });
+  };
+
+  const getReagents = (): void => {
+    api.get(`/reagents/list`).then(response => {
+      setList(response.data);
       setLoading(false);
     });
   };
@@ -43,22 +66,39 @@ const Dashboard: React.FC = ({ children }) => {
         <Linker to="/request_register">
           <Card>
             <FiUsers />
-            <strong>{info?.pendingRequestsNumber || 0}</strong> solicitações de
-            cadastro pendentes
+            <strong>{numberRequestUser}</strong> solicitações de cadastro
+            pendentes
           </Card>
         </Linker>
       </DashboardItem>
       <DashboardItem>
-        <Card>
-          <strong>81.712</strong> Doohickeys
-        </Card>
+        <Linker to={path.laboratories.manageAddRequest}>
+          <Card>
+            <MdWorkOutline />
+            <strong>{numberRequestLab}</strong> solicitações de criação de
+            laboratório
+          </Card>
+        </Linker>
       </DashboardItem>
       <DashboardItemFull>
-        <Card>
-          <img src="https://imgs.xkcd.com/comics/decline.png" alt="" />
-        </Card>
+        <Linker to="/list_reagents">
+          <Card>
+            <h3>Reagentes Licenciados</h3>
+            <Table>
+              {list.map(item => (
+                <tr>
+                  <TextId>{item.code}</TextId>
+                  <TextName>{item.name}</TextName>
+                  <TextNumber>
+                    {item.controlled ? 'Controlado' : 'Não-Controlado'}
+                  </TextNumber>
+                </tr>
+              ))}
+            </Table>
+          </Card>
+        </Linker>
       </DashboardItemFull>
-      <DashboardItemCol>
+      {/* <DashboardItemCol>
         <Card>A</Card>
       </DashboardItemCol>
       <DashboardItemCol>
@@ -69,7 +109,7 @@ const Dashboard: React.FC = ({ children }) => {
       </DashboardItemCol>
       <DashboardItemCol>
         <Card>D</Card>
-      </DashboardItemCol>
+      </DashboardItemCol> */}
     </DashboardContainer>
   );
 };

@@ -50,8 +50,8 @@ export const Card = styled.div`
   padding: 1rem;
   font-size: 1.2rem;
   font-weight: 300;
-  display: flex;
   align-items: center;
+  text-align: center;
   background-color: #fff;
   color: #4f4f4f;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -70,4 +70,36 @@ export const Card = styled.div`
 
 export const Linker = styled(Link)`
   text-decoration: none;
+`;
+
+export const Table = styled.table`
+  width: 90%;
+  border-collapse: separate;
+  border-spacing: 0 0.4em;
+  margin: auto;
+
+  td {
+    padding: 2px 10px 2px 10px;
+    background-color: #e2e2e2;
+    color: #000;
+  }
+`;
+
+export const TextId = styled.td`
+  font-size: 0.7rem;
+  text-align: left;
+  max-width: 50px;
+  width: auto;
+  min-width: 70px;
+`;
+
+export const TextName = styled.td`
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: left;
+`;
+
+export const TextNumber = styled.td`
+  font-size: 0.8rem;
+  text-align: end;
 `;
