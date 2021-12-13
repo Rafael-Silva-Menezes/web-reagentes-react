@@ -55,7 +55,7 @@ export const TextNumber = styled.td`
 `;
 
 export const Buttons = styled.td`
-  max-width: 80px;
+  max-width: 105px;
   width: auto;
   min-width: 10px;
 `;
@@ -64,4 +64,13 @@ export const SearchContainer = styled.div`
   display: flex;
   margin-top: 2rem;
   width: 30%;
+`;
+
+export const Loading = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 3rem auto auto auto;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
 `;

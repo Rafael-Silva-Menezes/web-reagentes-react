@@ -66,7 +66,7 @@ const AddLaboratory: React.FC = () => {
 
         addToast({
           type: 'error',
-          title: 'Erro na autenticação',
+          title: 'Erro na criação',
           description:
             'Ocorreu um erro ao cadastrar o laboratório, cheque as credenciais.',
         });
