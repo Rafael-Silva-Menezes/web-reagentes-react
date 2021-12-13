@@ -1,16 +1,16 @@
 import React, { useCallback, useRef } from 'react';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import getValidationErrors from '../../../utils/getValidationErrors';
-
+import { useToast } from '../../../hooks/toast';
 import { path } from '../../../routes';
-import { ParamTypes } from '../../../interfaces/params';
 import { Content, Header } from './styles';
 import Input from '../../../components/Input';
 import Button from '../../../components/Button';
 import Title from '../../../components/Title';
+import api from '../../../services/api';
 
 interface FormData {
   department: string;
@@ -20,7 +20,7 @@ interface FormData {
 
 const AddRequest: React.FC = ({ children }) => {
   const formRef = useRef<FormHandles>(null);
-  const { id } = useParams<ParamTypes>();
+  const { addToast } = useToast();
   const history = useHistory();
 
   const handleSubmit = useCallback(
@@ -40,14 +40,31 @@ const AddRequest: React.FC = ({ children }) => {
           abortEarly: false,
         });
 
-        //
-
-        history.push(path.laboratories.manage);
+        api
+          .post('/laboratories/add/request', {
+            name: data.name,
+            code: data.code,
+            department_name: data.department,
+          })
+          .then(response => {
+            addToast({
+              type: 'success',
+              title: 'Cadastro realizado!',
+              description: 'Laboratório cadastrado com sucesso!',
+            });
+          });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
           formRef.current?.setErrors(errors);
         }
+
+        addToast({
+          type: 'error',
+          title: 'Erro na criação',
+          description:
+            'Ocorreu um erro ao cadastrar o laboratório, cheque as credenciais.',
+        });
       }
     },
     [history],

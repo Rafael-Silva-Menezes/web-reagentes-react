@@ -8,7 +8,7 @@ import api from '../../../services/api';
 import { useToast } from '../../../hooks/toast';
 
 import { path } from '../../../routes';
-import { Content, Header } from './styles';
+import { Content } from './styles';
 import Input from '../../../components/Input';
 import Button from '../../../components/Button';
 import Title from '../../../components/Title';
@@ -40,8 +40,6 @@ const AddLaboratory: React.FC = () => {
         await schema.validate(data, {
           abortEarly: false,
         });
-
-        console.log(JSON.stringify(data));
 
         api
           .post('/laboratories/add', {

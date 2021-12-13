@@ -40,7 +40,6 @@ const ManageLaboratory: React.FC = () => {
   const getLaboratories = (): void => {
     try {
       api.get('laboratories/list').then(response => {
-        console.log(response.data);
         if (response.status > 300)
           addToast({
             type: 'error',

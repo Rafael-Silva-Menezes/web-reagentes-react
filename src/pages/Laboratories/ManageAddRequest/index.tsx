@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FiThumbsUp, FiThumbsDown } from 'react-icons/fi';
 import Loader from 'react-loader-spinner';
+import { useHistory } from 'react-router-dom';
 import {
   Container,
   Table,
@@ -16,6 +17,7 @@ import ButtonActions from '../../../components/ButtonActions';
 import SearchInput from '../../../components/SearchInput';
 import filterListByText from '../../../utils/filterListByText';
 import api from '../../../services/api';
+import { useToast } from '../../../hooks/toast';
 
 const content = [
   {
@@ -37,28 +39,38 @@ const BondRequest: React.FC = () => {
   const [filterList, setFilterList] = useState<any[]>([]);
   const [call, setCall] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { addToast } = useToast();
+  const history = useHistory();
 
   useEffect(() => {
     if (list.length === 0 && !call) {
-      // setLoading(true);
-      setList(content);
+      setLoading(true);
+      getLaboratories();
       setCall(true);
-      // api
-      //   .post('/users/login', {
-      //     email: 'admin@academico.ufs.br',
-      //     password: 'admin',
-      //   })
-      //   .then(response => {
-      //     api.defaults.headers.common['x-access-token'] =
-      //       response.data.accessToken;
-      //     api.get(`/users/list/pending`).then(listPending => {
-      //       setList(listPending.data);
-      //       setLoading(false);
-      //       setCall(true);
-      //     });
-      //   });
     }
   }, [call, list.length]);
+
+  const getLaboratories = (): void => {
+    try {
+      api.get('laboratories/list?status=pending').then(response => {
+        if (response.status > 300)
+          addToast({
+            type: 'error',
+            title: 'Erro',
+            description: 'Ocorreu um erro ao listar os laboratórios',
+          });
+        setList(response.data);
+        setFilterList(response.data);
+        setLoading(false);
+      });
+    } catch (err) {
+      addToast({
+        type: 'error',
+        title: 'Erro',
+        description: 'Ocorreu um erro ao listar os laboratórios',
+      });
+    }
+  };
 
   const accept = (id: string, name: string): void => {
     const result = confirm(`Criar laboratório ${name}?`);
@@ -96,7 +108,7 @@ const BondRequest: React.FC = () => {
       setFilterList(
         filterListByText({
           list,
-          fieldsToSearch: ['campus', 'department', 'name', 'code'],
+          fieldsToSearch: ['name', 'status', 'code'],
           filter: e.target.value,
         }),
       );
@@ -126,11 +138,11 @@ const BondRequest: React.FC = () => {
           </Loading>
         ) : (
           <Table>
-            {list.map(item => (
-              <tr key={item.id}>
-                <TextId>{item.department}</TextId>
+            {filterList.map(item => (
+              <tr key={item.code}>
+                <TextId>{item.code}</TextId>
                 <TextName>{item.name}</TextName>
-                <TextNumber>Campus {item.campus}</TextNumber>
+                <TextNumber>{item.department.name}</TextNumber>
                 <Buttons>
                   <div>
                     <ButtonActions
