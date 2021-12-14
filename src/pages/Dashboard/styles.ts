@@ -80,8 +80,8 @@ export const Table = styled.table`
 
   td {
     padding: 2px 10px 2px 10px;
-    background-color: #e2e2e2;
-    color: #000;
+    background-color: #081a51;
+    color: #ffff;
   }
 `;
 
